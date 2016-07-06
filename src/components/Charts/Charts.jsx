@@ -2,6 +2,7 @@ import React, { Component, PropTypes } from 'react';
 import classnames from 'classnames';
 import styles from './Charts.less';
 import Highcharts from "highcharts";
+import ChartSelection from './ChartSelection/ChartSelection.jsx';
 require('highcharts/modules/exporting')(Highcharts);
 
 class Charts extends React.Component{
@@ -19,6 +20,7 @@ class Charts extends React.Component{
     render(){
         return (
             <div>
+                <ChartSelection />
                 <h1>this is chart 1 </h1>
                 <div ref="c"></div>
             </div>
