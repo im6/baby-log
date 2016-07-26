@@ -15,6 +15,8 @@ const MainLayout = ({ children }) => {
           <Link to="/actived">Actived</Link><br />
           <Link to="/completed">Completed</Link><br />
           <Link to="/404">404</Link><br />
+            <Link to="/new">Create New</Link><br />
+            <Link to="/dashboard">Dashboard</Link><br />
         </div>
         <div className={styles.main}>
           {children}
