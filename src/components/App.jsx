@@ -5,10 +5,10 @@ import Sidebar from './Sidebar/Sidebar.jsx';
 
 const App = ({ location }) => {
   return (
-    <div>
+    <Layout>
         <Sidebar location={location} />
         <Dashboard location={location} />
-    </div>
+    </Layout>
   );
 };
 
