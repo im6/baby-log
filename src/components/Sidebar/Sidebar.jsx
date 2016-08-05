@@ -7,7 +7,6 @@ const RadioGroup = Radio.Group;
 
 const Sidebar = ({ children }) => {
     var me = this;
-    debugger;
     return (
         <div>
             <Button type="primary" icon="home">Home</Button><br/>

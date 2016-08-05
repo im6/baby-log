@@ -53,7 +53,6 @@ function filter(todos, pathname) {
 }
 
 function mapStateToProps({ todos }, { location }) {
-    debugger;
   return {
     todos: filter(todos, location.pathname),
   };
