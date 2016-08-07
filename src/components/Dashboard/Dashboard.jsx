@@ -5,7 +5,9 @@ import styles from './Dashboard.less';
 import BasicChart from '../Charts/Basic/BasicChart.jsx';
 import ChartTable from '../Charts/Table/ChartTable.jsx';
 
-const Dashboard = ({ list, p2 }) => {
+const Dashboard = ({chartData}) => {
+
+    debugger;
     let localData = { series: [{
         data: [1, 3, 2, 4]
     }] };
@@ -22,10 +24,9 @@ Dashboard.propTypes = {
 
 };
 
-function mapStateToProps({ list1 }, { location }) {
+function mapStateToProps({charts}, { location }) {
     return {
-        list2: [1,2],
-        p2: 'test'
+        chartData: charts
     };
 }
 

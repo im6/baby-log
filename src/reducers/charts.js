@@ -2,19 +2,22 @@ import { handleActions } from 'redux-actions';
 import { combineReducer } from 'redux';
 
 const charts = handleActions({
-  ['charts/getAll'](state) {
-      debugger;
-
-    return {
-        chartsList:[
-            {name: 'chart1', data: [1,2,3,4,5]},
-            {name: 'chart2', data: [1,2,3,4,6]}
-        ]
-    };
-  }
+        ['charts/getAll'](state, action) {
+            return {
+                chartsList:[],
+                isLoading: true
+            };
+          },
+        ['charts/getAll/success'](state, action) {
+            return {
+                chartsList:action.payload,
+                isLoading: false
+            };
+        }
 },
     {
-        chartsList: []
+        chartsList: [],
+        isLoading: true
     });
 
 export default charts;
