@@ -7,9 +7,8 @@ import NotFound from '../components/NotFound';
 const Routes = ({ history }) =>
   <Router history={history}>
     <Route path="/" component={App} />
-    <Route path="/actived" component={App} />
-    <Route path="/completed" component={App} />
-    <Route path="/charts" component={Charts} />
+    <Route path="/home" component={App} />
+    <Route path="/dashboard" component={App} />
     <Route path="*" component={NotFound}/>
   </Router>;
 
