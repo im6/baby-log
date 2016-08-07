@@ -6,8 +6,6 @@ import BasicChart from '../Charts/Basic/BasicChart.jsx';
 import ChartTable from '../Charts/Table/ChartTable.jsx';
 
 const Dashboard = ({chartData}) => {
-
-    debugger;
     let localData = { series: [{
         data: [1, 3, 2, 4]
     }] };

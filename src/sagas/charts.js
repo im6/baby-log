@@ -6,7 +6,6 @@ import { message } from 'antd';
 function* getCharts() {
     try {
         const { jsonResult } = yield call(getAllCharts);
-        debugger;
         if (jsonResult.data) {
             yield put({
                 type: 'charts/getAll/success',
