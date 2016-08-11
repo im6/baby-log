@@ -1,6 +1,6 @@
 import { Router, Route, IndexRoute, Link } from 'react-router';
 import React, { Component, PropTypes } from 'react';
-import { Row, Col } from 'antd';
+import { Row, Col, Icon } from 'antd';
 import QueueAnim from 'rc-queue-anim';
 import styles from './Home.less';
 import Banner1 from './assets/banner1.png';
@@ -15,17 +15,35 @@ const Home = () => {
             <div className={styles.textContainer}>
                 <QueueAnim delay={500} style={{ height: 150 }}>
                     <div key="a">
-                        <h1>Next generation zhuangbi liqi</h1>
+                        <h1>
+                            <Icon type="bar-chart" />&nbsp;&nbsp;
+                            Data by your side
+                        </h1>
                         <br/>
-
                     </div>
                     <div key="b">
-                        <h1>Your own visualization notebook in your pocket</h1>
+                        <h1>
+                            <Icon type="appstore-o" />&nbsp;&nbsp;
+                            Model in your mind
+                        </h1>
                         <br/>
 
                     </div>
                     <div key="c">
-                        <h1>Based by most zhuangbi tech</h1>
+                        <h1>
+                            <Icon type="picture" />&nbsp;&nbsp;
+                            Visualization in your pocket
+                        </h1>
+                        <br/>
+                    </div>
+                    <div key="d">
+                        <h3>
+
+                            <Link to="/dashboard">
+                                <Icon type="picture" />&nbsp;&nbsp;
+                                Go to dashbaord
+                            </Link>
+                        </h3>
                         <br/>
                     </div>
                 </QueueAnim>
