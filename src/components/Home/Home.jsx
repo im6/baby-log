@@ -15,14 +15,14 @@ const Home = () => {
             <div className={styles.textContainer}>
                 <QueueAnim delay={500} style={{ height: 150 }}>
                     <div key="a">
-                        <h1>
+                        <h1 className={styles.bigTitle}>
                             <Icon type="bar-chart" />&nbsp;&nbsp;
                             Data by your side
                         </h1>
                         <br/>
                     </div>
                     <div key="b">
-                        <h1>
+                        <h1 className={styles.bigTitle}>
                             <Icon type="appstore-o" />&nbsp;&nbsp;
                             Model in your mind
                         </h1>
@@ -30,7 +30,7 @@ const Home = () => {
 
                     </div>
                     <div key="c">
-                        <h1>
+                        <h1 className={styles.bigTitle}>
                             <Icon type="picture" />&nbsp;&nbsp;
                             Visualization in your pocket
                         </h1>
@@ -40,7 +40,7 @@ const Home = () => {
                         <h3>
 
                             <Link to="/dashboard">
-                                <Icon type="picture" />&nbsp;&nbsp;
+                                <Icon type="caret-right" />&nbsp;&nbsp;
                                 Go to dashbaord
                             </Link>
                         </h3>
