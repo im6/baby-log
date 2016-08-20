@@ -3,7 +3,7 @@ import React, { Component, PropTypes } from 'react';
 import { Row, Col, Icon } from 'antd';
 import QueueAnim from 'rc-queue-anim';
 import styles from './Home.less';
-import Banner1 from './assets/banner1.png';
+import Banner1 from './assets/banner3.png';
 
 const Home = () => {
     return (
