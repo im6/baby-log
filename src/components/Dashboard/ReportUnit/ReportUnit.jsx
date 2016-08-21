@@ -6,19 +6,22 @@ import BasicChart from '../../Charts/Basic/BasicChart.jsx';
 import ChartTable from '../../Charts/Table/ChartTable.jsx';
 import {Row, Col, Card } from 'antd';
 const ReportUnit = ({data, info}) => {
-
     return (
         <div>
             <Row>
                 <Col xs={24} sm={24} md={12} lg={12}>
-                    <BasicChart className={styles.chart} data={data}/>
+                    <div className={styles.chart}>
+                        <BasicChart data={data}/>
+                    </div>
                 </Col>
                 <Col xs={24} sm={24} md={12} lg={12}>
-                    <Card title="Card title">
-                        <p>Card content</p>
-                        <p>Card content</p>
-                        <p>Card content</p>
-                    </Card>
+                    <div className={styles.chart}>
+                        <Card title="Chart Info">
+                            <p>Card content</p>
+                            <p>Card content</p>
+                            <p>Card content</p>
+                        </Card>
+                    </div>
                 </Col>
             </Row>
 
@@ -29,7 +32,7 @@ const ReportUnit = ({data, info}) => {
 
 ReportUnit.propTypes = {
     data: PropTypes.object.isRequired,
-    info: PropTypes.object.isRequired
+    info: PropTypes.object.isRequired,
 };
 
 export default ReportUnit;
