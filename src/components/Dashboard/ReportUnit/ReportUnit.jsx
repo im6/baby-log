@@ -4,23 +4,35 @@ import classnames from 'classnames';
 import styles from './ReportUnit.less';
 import BasicChart from '../../Charts/Basic/BasicChart.jsx';
 import ChartTable from '../../Charts/Table/ChartTable.jsx';
-import {Row, Col, Card } from 'antd';
+import {Row, Col, Card, Button, Tabs } from 'antd';
+const TabPane = Tabs.TabPane;
+
 const ReportUnit = ({data, info}) => {
     return (
         <div>
             <Row>
+                <Card title="Chart Info">
+                    <Tabs defaultActiveKey="1">
+                        <TabPane tab="Chart" key="1">
+                            <BasicChart data={data}/>
+                        </TabPane>
+                        <TabPane tab="Info" key="2">
+                            <Card title="Chart Info">
+                                <p>Card content</p>
+                                <p>Card content</p>
+                                <p>Card content</p>
+                                <Button type="primary">Toggle</Button>
+                            </Card>
+                        </TabPane>
+                        <TabPane tab="Data" key="3">
+                            This is the table
+                        </TabPane>
+                    </Tabs>
+                </Card>
+
                 <Col xs={24} sm={24} md={12} lg={12}>
                     <div className={styles.chart}>
-                        <BasicChart data={data}/>
-                    </div>
-                </Col>
-                <Col xs={24} sm={24} md={12} lg={12}>
-                    <div className={styles.chart}>
-                        <Card title="Chart Info">
-                            <p>Card content</p>
-                            <p>Card content</p>
-                            <p>Card content</p>
-                        </Card>
+
                     </div>
                 </Col>
             </Row>

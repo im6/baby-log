@@ -1,4 +1,5 @@
 import { Router, Route, IndexRoute, Link } from 'react-router';
+import { connect } from 'react-redux';
 import React, { Component, PropTypes } from 'react';
 import { Menu, Icon, Row, Col } from 'antd';
 import styles from './Header.less';
@@ -6,7 +7,7 @@ import Logo from './assets/logo2.png';
 const SubMenu = Menu.SubMenu;
 const MenuItemGroup = Menu.ItemGroup;
 
-const Header = () => {
+const Header = ({auth}) => {
     return (
     <div className={styles.headers}>
         <Row type="flex" align="bottom">
@@ -56,6 +57,18 @@ const Header = () => {
                         <Icon type="heart-o" />Contact
                         </h3>
                     </Menu.Item>
+                    <Menu.Item key="login">
+                        <Link to="/login">
+                                {(function(){
+                                    debugger;
+                                    if(auth.isAuthenticated){
+                                        return (<h3><Icon type="logout" /> LogOff</h3>)
+                                    }else{
+                                        return (<h3><Icon type="user" />Login</h3>)
+                                    }
+                                })()}
+                        </Link>
+                    </Menu.Item>
                 </Menu>
             </Col>
         </Row>
@@ -69,4 +82,12 @@ Header.propTypes = {
 
 };
 
-export default Header;
+function mapStateToProps({auth}, { location }) {
+    return {
+        auth: auth
+    };
+}
+export default connect(mapStateToProps)(Header);
+
+
+

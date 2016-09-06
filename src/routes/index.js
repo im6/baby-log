@@ -9,6 +9,7 @@ const Routes = ({ history }) =>
     <Route path="/" component={App} />
     <Route path="/home" component={App} />
     <Route path="/dashboard" component={App} />
+    <Route path="/login" component={App} />
     <Route path="*" component={NotFound}/>
   </Router>;
 

@@ -1,9 +1,12 @@
 doctype html
-html
+html(xmlns:wb="http://open.weibo.com/wb")
     head
         meta(charset='UTF-8')
+        meta()
         title Welcome to login
         link(rel='shortcut icon', href='/content/dash/icon/favicon.ico')
-        link(rel='stylesheet', href='/build/auth/css/style.min.css')
+        script(src="http://tjs.sjs.sinajs.cn/open/api/js/wb.js?appkey=806813820&debug=true")
+
     body
         This is main page
+        <wb:like appkey="806813820" type="number"></wb:like>
