@@ -8,6 +8,7 @@ const SubMenu = Menu.SubMenu;
 const MenuItemGroup = Menu.ItemGroup;
 
 const Header = ({auth}) => {
+    debugger;
     return (
     <div className={styles.headers}>
         <Row type="flex" align="bottom">
@@ -58,16 +59,15 @@ const Header = ({auth}) => {
                         </h3>
                     </Menu.Item>
                     <Menu.Item key="login">
-                        <Link to="/login">
+
                                 {(function(){
-                                    debugger;
                                     if(auth.isAuthenticated){
                                         return (<h3><Icon type="logout" /> LogOff</h3>)
                                     }else{
                                         return (<h3><Icon type="user" />Login</h3>)
                                     }
                                 })()}
-                        </Link>
+
                     </Menu.Item>
                 </Menu>
             </Col>

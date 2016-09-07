@@ -3,11 +3,10 @@ import { combineReducer } from 'redux';
 
 const auth = handleActions({
         ['auth/login'](state, action) {
-            debugger;
             return {
                 isAuthenticated: true,
                 token: action.payload.token,
-                userName: action.payload.userName,
+                userName: action.payload.username,
                 access: []
             };
           },
