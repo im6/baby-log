@@ -8,7 +8,6 @@ const SubMenu = Menu.SubMenu;
 const MenuItemGroup = Menu.ItemGroup;
 
 const Header = ({auth}) => {
-    debugger;
     return (
     <div className={styles.headers}>
         <Row type="flex" align="bottom">
