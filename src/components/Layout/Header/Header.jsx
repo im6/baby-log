@@ -1,5 +1,6 @@
 import { Router, Route, IndexRoute, Link } from 'react-router';
 import { connect } from 'react-redux';
+import {createAction} from '../../../actions/actionCreator.jsx';
 import React, { Component, PropTypes } from 'react';
 import { Menu, Icon, Row, Col } from 'antd';
 import styles from './Header.less';
@@ -7,7 +8,11 @@ import Logo from './assets/logo2.png';
 const SubMenu = Menu.SubMenu;
 const MenuItemGroup = Menu.ItemGroup;
 
-const Header = ({auth}) => {
+const Header = ({auth, dispatch}) => {
+    const logoff = () => {
+        let action = createAction('auth/logoff');
+        dispatch(action);
+    };
     return (
     <div className={styles.headers}>
         <Row type="flex" align="bottom">
@@ -59,13 +64,13 @@ const Header = ({auth}) => {
                     </Menu.Item>
                     <Menu.Item key="login">
 
-                                {(function(){
-                                    if(auth.isAuthenticated){
-                                        return (<h3><Icon type="logout" /> LogOff</h3>)
-                                    }else{
-                                        return (<h3><Icon type="user" />Login</h3>)
-                                    }
-                                })()}
+                            {(function(){
+                                if(auth.isAuthenticated){
+                                    return (<h3 onClick={logoff.bind(this)}><Icon type="logout" /> LogOff</h3>)
+                                }else{
+                                    return (<Link to="/login"><h3><Icon type="user" />Login</h3></Link>)
+                                }
+                            })()}
 
                     </Menu.Item>
                 </Menu>

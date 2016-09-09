@@ -8,8 +8,17 @@ const FormItem = Form.Item;
 
 
 
-let Auth = ({auth, onSubmit, form}) => {
+let Auth = ({auth, form, dispatch}) => {
     const {getFieldProps, getFieldsValue} = form;
+
+    const onSubmit = (e) =>{
+        let payload = getFieldsValue();
+        e.preventDefault();
+        var action = createAction('auth/login', {
+            ...payload
+        });
+        dispatch(action);
+    };
 
     return (
         <Row>
@@ -17,7 +26,7 @@ let Auth = ({auth, onSubmit, form}) => {
             </Col>
             <Col span={8}>
                 <Card title="User Login" extra={<a href="#">Register</a>} style={{ width: 400 }}>
-                    <Form horizontal onSubmit={onSubmit.bind(null, getFieldsValue())}>
+                    <Form horizontal onSubmit={onSubmit}>
                         <FormItem label="Username">
                             <Input placeholder="username/Email" {...getFieldProps('username')}/>
                         </FormItem>
@@ -49,11 +58,8 @@ Auth.propTypes = {
 
 const mapDispatchToProps = (dispatch) => {
     return {
-        onSubmit: (payload) => {
-            var action = createAction('auth/login', {
-                ...payload
-            });
-            dispatch(action);
+        onSubmit: (e) => {
+
         }
     }
 };
@@ -64,5 +70,5 @@ function mapStateToProps({auth}, { location }) {
     };
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(Auth);
+export default connect(mapStateToProps)(Auth);
 
