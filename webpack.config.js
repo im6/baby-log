@@ -37,5 +37,7 @@ module.exports = function(webpackConfig) {
   }, {});
   webpackConfig.entry = Object.assign({}, webpackConfig.entry, newEntries);
 
+    webpackConfig.output.path = path.join(__dirname, './public/dist');
+
   return webpackConfig;
 };
