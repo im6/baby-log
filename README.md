@@ -1,6 +1,4 @@
-# Welcome
-
-## Build Status
+# Build Status
 
 - [JavaScript.Fun](https://github.com/im6/javascript-fun)  
   ![status](https://github.com/im6/javascript-fun/workflows/build/badge.svg)
