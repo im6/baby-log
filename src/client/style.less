@@ -1,0 +1,84 @@
+@import url("https://fonts.googleapis.com/css?family=Roboto&display=swap");
+
+a,
+div,
+h1,
+h2,
+h3,
+h4,
+span,
+button,
+label,
+th,
+td {
+  font-family: "Roboto", sans-serif;
+}
+
+.create-btn {
+  width: 100%;
+  max-width: 768px;
+  padding: 3px 20px;
+}
+
+.activity-chkbox-group {
+  & > div {
+    margin: 5px 0 12px 0;
+    label {
+      margin-left: 5px;
+    }
+  }
+}
+
+.badge {
+  display: inline-block;
+  padding: 3px 5px;
+  border-radius: 3px;
+}
+
+.badge-color-1 {
+  color: white;
+  background-color: #394a6d;
+}
+.badge-color-2 {
+  color: white;
+  background-color: #3c9d9b;
+}
+.badge-color-3 {
+  color: white;
+  background-color: #52de97;
+}
+.badge-color-4 {
+  color: black;
+  background-color: #c0ffb3;
+}
+
+.activity-table {
+  border-collapse: collapse;
+  th,
+  td {
+    border: 1px solid #607d8b;
+    padding: 0px;
+    span {
+      margin: 5px;
+    }
+  }
+  tr {
+    & > td:nth-child(1) {
+      font-size: 15px;
+    }
+  }
+}
+
+.activity-layout {
+  display: flex;
+  padding: 15px 0;
+  & > form:nth-child(1) {
+    padding-right: 20px;
+  }
+}
+
+@media only screen and (min-device-width: 375px) and (max-device-width: 812px) and (orientation: portrait) {
+  .activity-layout {
+    display: block;
+  }
+}
