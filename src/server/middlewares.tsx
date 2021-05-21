@@ -14,9 +14,14 @@ interface Activity {
   name: string;
 }
 
-const fileMap: FileMap = {
-  "app.js": "./local/client/index.js",
-};
+const fileMap: FileMap =
+  process.env.NODE_ENV === "development"
+    ? {
+        "app.js": "./local/client/index.js",
+      }
+    : {
+        "app.js": "./dist/client/index.js",
+      };
 
 const childId = 1;
 
