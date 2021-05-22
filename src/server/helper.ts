@@ -1,5 +1,9 @@
 import { add, format } from "date-fns";
 
+const minDiffOptions = [
+  -100, -90, -80, -70, -60, -50, -40, -30, -20, -10, 0, 10, 20,
+];
+
 const generateDatePair = (dateObj: Date, showNow: boolean) => {
   const dayStr = `${dateObj.getFullYear()}-${
     dateObj.getMonth() + 1
@@ -22,54 +26,23 @@ export const generateTimeOptions = (now: Date) => {
   const getDate = now.getDate();
   const hourVal = now.getHours();
   const minVal = now.getMinutes();
+
   const floorMin = Math.floor(minVal / 10) * 10;
   const isFloorMin = floorMin === minVal;
-  const date0 = add(
-    new Date(yearVal, monthVal, getDate, hourVal, floorMin, 0),
-    {
-      minutes: -30,
-    }
-  );
-  const date1 = add(
-    new Date(yearVal, monthVal, getDate, hourVal, floorMin, 0),
-    {
-      minutes: -20,
-    }
-  );
-  const date2 = add(
-    new Date(yearVal, monthVal, getDate, hourVal, floorMin, 0),
-    {
-      minutes: -10,
-    }
-  );
-  const date3 = new Date(yearVal, monthVal, getDate, hourVal, floorMin, 0);
-  const date3Now = new Date(yearVal, monthVal, getDate, hourVal, minVal, 0);
-  const date4 = add(
-    new Date(yearVal, monthVal, getDate, hourVal, floorMin, 0),
-    {
-      minutes: 10,
-    }
-  );
-  const date5 = add(
-    new Date(yearVal, monthVal, getDate, hourVal, floorMin, 0),
-    {
-      minutes: 20,
-    }
-  );
 
-  let dateOptions = [
-    generateDatePair(date0, false),
-    generateDatePair(date1, false),
-    generateDatePair(date2, false),
-    generateDatePair(date3, isFloorMin),
-    generateDatePair(date3Now, true),
-    generateDatePair(date4, false),
-    generateDatePair(date5, false),
-  ];
-  if (isFloorMin) {
-    dateOptions = dateOptions.filter((_, k) => {
-      return k !== 4;
+  const nowBase = new Date(yearVal, monthVal, getDate, hourVal, minVal, 0);
+  const floorBase = new Date(yearVal, monthVal, getDate, hourVal, floorMin, 0);
+
+  const dateOptions = minDiffOptions.map((v: number) => {
+    const timeVal = add(floorBase, {
+      minutes: v,
     });
+    return generateDatePair(timeVal, v === 0 && isFloorMin);
+  });
+
+  if (!isFloorMin) {
+    const insertIndex = minDiffOptions.indexOf(0) + 1;
+    dateOptions.splice(insertIndex, 0, generateDatePair(nowBase, true));
   }
 
   return dateOptions;

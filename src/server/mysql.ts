@@ -20,7 +20,6 @@ export default (qr: string) =>
       user,
       password,
       database: "baby_log",
-      timezone: "-04:00",
     });
     conn.query(qr, (error: any, results: any) => {
       if (error) {

@@ -27,19 +27,23 @@ const childId = 1;
 
 export const renderActivity = async (req: Request, res: Response) => {
   const actDefs: any = await mysql("select * from activity_def");
+
+  let whereClause = null;
   let selectedActivity = null;
+
   const { activity } = req.query;
   if (Array.isArray(activity)) {
     selectedActivity = activity.map((v: any) => parseInt(v));
+    whereClause = `WHERE activity_id in (${selectedActivity.join(",")})`;
   } else if (activity) {
     selectedActivity = [parseInt(activity.toString(), 10)];
+    whereClause = `WHERE activity_id = ${activity}`;
   } else {
     selectedActivity = actDefs.map((v: any) => v.id);
+    whereClause = "";
   }
 
-  const query = `SELECT * FROM logs WHERE activity_id in (${selectedActivity.join(
-    ","
-  )}) ORDER BY event_time DESC LIMIT 200`;
+  const query = `SELECT * FROM logs ${whereClause} ORDER BY event_time DESC LIMIT 200`;
   const logs: any = await mysql(query);
 
   const timeSet = new Set();
