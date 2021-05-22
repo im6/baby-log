@@ -1,6 +1,6 @@
 import { FC } from "react";
 import Html from "../../layout/Html";
-//import Nav from "../../partials/Nav";
+import Nav from "../../partials/Nav";
 import EventTable from "../../partials/EventTable";
 
 interface ActivityProps {
@@ -14,7 +14,7 @@ const Activity: FC<ActivityProps> = ({
   selectedActivity,
   eventList,
 }) => (
-  <Html title="Baby Log">
+  <Html title="Baby Logs">
     <div>
       <a href="/create">
         <button type="button" className="create-btn">
@@ -23,7 +23,7 @@ const Activity: FC<ActivityProps> = ({
       </a>
     </div>
     <div className="activity-layout">
-      {/* <Nav allData={activityDefinition} selected={selectedActivity} /> */}
+      <Nav allData={activityDefinition} selected={selectedActivity} />
       <EventTable data={eventList} activityDef={activityDefinition} />
     </div>
   </Html>

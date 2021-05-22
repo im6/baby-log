@@ -12,10 +12,12 @@ const CreatePage: FC<CreateProps> = ({
   selectedActivity,
   timeOptions,
 }) => (
-  <Html title="Baby Log">
+  <Html title="Create an event">
     <BackLink />
     <form action="/create-event" method="post">
-      <label htmlFor="event-time">Time:</label>
+      <label htmlFor="event-time">
+        <h3>Time</h3>
+      </label>
       {timeOptions.map((v: any) => {
         const id = `time-options-${v.id}`;
         return (
@@ -27,17 +29,20 @@ const CreatePage: FC<CreateProps> = ({
               value={v.id}
               defaultChecked={v.isNow}
             />
-            <label htmlFor={id}>{v.name}</label>
+            <label className="create-time" htmlFor={id}>
+              {v.name}
+            </label>
           </div>
         );
       })}
-      <br />
-      <label htmlFor="selected-activity">Activity:</label>
+
+      <label htmlFor="selected-activity">
+        <h3>Activity</h3>
+      </label>
       <ActivityChkboxGroup
         selected={selectedActivity}
         allData={activityDefinition}
       />
-      <br />
       <input type="submit" value="Submit Event" />
     </form>
   </Html>

@@ -37,7 +37,11 @@ export const renderActivity = async (req: Request, res: Response) => {
     selectedActivity = actDefs.map((v: any) => v.id);
   }
 
-  const logs: any = await mysql("SELECT * FROM logs ORDER BY event_time DESC");
+  const query = `SELECT * FROM logs WHERE activity_id in (${selectedActivity.join(
+    ","
+  )}) ORDER BY event_time DESC LIMIT 200`;
+  const logs: any = await mysql(query);
+
   const timeSet = new Set();
   const eventDict = logs.reduce((acc: any, cur: any) => {
     const date = formatDate(cur.event_time);

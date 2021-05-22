@@ -1,8 +1,10 @@
 import { FC } from "react";
+
 interface EventTableProps {
   data: any;
   activityDef: any;
 }
+
 const EventTable: FC<EventTableProps> = ({ data, activityDef }) => {
   const actMap = activityDef.reduce((acc: any, cur: any) => {
     acc[cur.id] = cur.name;
