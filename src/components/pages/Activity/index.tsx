@@ -1,5 +1,4 @@
-import { FC } from "react";
-import Html from "../../layout/Html";
+import { FC, Fragment } from "react";
 import Nav from "../../partials/Nav";
 import EventTable from "../../partials/EventTable";
 
@@ -14,7 +13,7 @@ const Activity: FC<ActivityProps> = ({
   selectedActivity,
   eventList,
 }) => (
-  <Html title="Baby Logs">
+  <Fragment>
     <div>
       <a href="/create">
         <button type="button" className="create-btn">
@@ -26,7 +25,7 @@ const Activity: FC<ActivityProps> = ({
       <Nav allData={activityDefinition} selected={selectedActivity} />
       <EventTable data={eventList} activityDef={activityDefinition} />
     </div>
-  </Html>
+  </Fragment>
 );
 
 export default Activity;

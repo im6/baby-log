@@ -1,5 +1,4 @@
-import { FC } from "react";
-import Html from "../../layout/Html";
+import { FC, Fragment } from "react";
 import BackLink from "../../partials/BackLink";
 import ActivityChkboxGroup from "../../partials/ActivityChkboxGroup";
 interface CreateProps {
@@ -12,7 +11,7 @@ const CreatePage: FC<CreateProps> = ({
   selectedActivity,
   timeOptions,
 }) => (
-  <Html title="Create an event">
+  <Fragment>
     <BackLink />
     <form action="/create-event" method="post">
       <div className="create-layout">
@@ -51,7 +50,7 @@ const CreatePage: FC<CreateProps> = ({
       </div>
       <input className="create-btn" type="submit" value="Submit Event" />
     </form>
-  </Html>
+  </Fragment>
 );
 
 export default CreatePage;

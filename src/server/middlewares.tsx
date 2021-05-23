@@ -1,6 +1,7 @@
 import { Request, Response } from "express";
 import { renderToStaticMarkup } from "react-dom/server";
 import mysql from "./mysql";
+import Html from "../components/layout/Html";
 import Activity from "../components/pages/Activity";
 import CreatePage from "../components/pages/Create";
 import CreateResultPage from "../components/pages/CreateResult";
@@ -21,6 +22,7 @@ const fileMap: FileMap =
       }
     : {
         "app.js": "./dist/client/index.js",
+        "style.css": "./dist/client/main.css",
       };
 
 const childId = 1;
@@ -65,11 +67,16 @@ export const renderActivity = async (req: Request, res: Response) => {
     };
   });
   const htmlDOM = (
-    <Activity
-      eventList={eventList}
-      activityDefinition={actDefs}
-      selectedActivity={selectedActivity}
-    />
+    <Html
+      title="Baby Logs"
+      criticalCss={process.env.NODE_ENV !== "development"}
+    >
+      <Activity
+        eventList={eventList}
+        activityDefinition={actDefs}
+        selectedActivity={selectedActivity}
+      />
+    </Html>
   );
   const html = renderToStaticMarkup(htmlDOM);
   res.status(200);
@@ -81,11 +88,16 @@ export const renderCreate = async (req: Request, res: Response) => {
   const timeOptions = generateTimeOptions(now);
   const actDefs = await mysql("select * from activity_def");
   const htmlDOM = (
-    <CreatePage
-      activityDefinition={actDefs}
-      selectedActivity={[]}
-      timeOptions={timeOptions}
-    />
+    <Html
+      title="Create an event"
+      criticalCss={process.env.NODE_ENV !== "development"}
+    >
+      <CreatePage
+        activityDefinition={actDefs}
+        selectedActivity={[]}
+        timeOptions={timeOptions}
+      />
+    </Html>
   );
   const html = renderToStaticMarkup(htmlDOM);
   res.status(200);
@@ -103,13 +115,21 @@ export const renderCreateResult = async (req: Request, res: Response) => {
     const query = `INSERT INTO logs (event_time, activity_id, child_id) VALUES ('${time}', '${activity}', ${childId})`;
     await mysql(query);
   } else {
-    const htmlDOM = <CreateResultPage error={true} />;
+    const htmlDOM = (
+      <Html title="Failed" criticalCss={process.env.NODE_ENV !== "development"}>
+        <CreateResultPage error={true} />
+      </Html>
+    );
     const html = renderToStaticMarkup(htmlDOM);
     res.status(500);
     res.send(`<!DOCTYPE html>${html}`);
     return;
   }
-  const htmlDOM = <CreateResultPage error={false} />;
+  const htmlDOM = (
+    <Html title="Succeed" criticalCss={process.env.NODE_ENV !== "development"}>
+      <CreateResultPage error={false} />
+    </Html>
+  );
   const html = renderToStaticMarkup(htmlDOM);
   res.status(200);
   res.send(`<!DOCTYPE html>${html}`);

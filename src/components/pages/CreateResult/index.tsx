@@ -1,5 +1,4 @@
-import { FC } from "react";
-import Html from "../../layout/Html";
+import { FC, Fragment } from "react";
 import BackLink from "../../partials/BackLink";
 
 interface CreateResultProps {
@@ -12,13 +11,13 @@ const CreateResultPage: FC<CreateResultProps> = ({ error }) => {
     return { __html: error ? "&#10060;" : "&#9989;" };
   };
   return (
-    <Html title={resultText}>
+    <Fragment>
       <BackLink />
       <h4>
         <span dangerouslySetInnerHTML={createIcon()} />
         &nbsp; Creating event {resultText}.
       </h4>
-    </Html>
+    </Fragment>
   );
 };
 

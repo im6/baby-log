@@ -6,7 +6,7 @@
   "scripts": {
     "start": "webpack --config webpack/dev.js",
     "build": "webpack --config webpack/prod.js",
-    "run-prod": "node -r dotenv/config dist/server/index.js dotenv_config_path=../javascript-fun.env"
+    "run-prod": "node -r dotenv/config dist/server/index.js dotenv_config_path=../baby-log.env"
   },
   "dependencies": {
     "date-fns": "^2.21.3",
@@ -25,6 +25,7 @@
     "css-loader": "^5.2.5",
     "less": "^4.1.1",
     "less-loader": "^9.0.0",
+    "mini-css-extract-plugin": "^1.6.0",
     "style-loader": "^2.0.0",
     "ts-loader": "^9.2.1",
     "typescript": "^4.2.4",

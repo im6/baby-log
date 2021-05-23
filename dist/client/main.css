@@ -1,0 +1,92 @@
+@font-face {
+  font-family: 'Roboto';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url(https://fonts.gstatic.com/s/roboto/v27/KFOmCnqEu92Fr1Mu4mxP.ttf) format('truetype');
+}
+a,
+div,
+h1,
+h2,
+h3,
+h4,
+span,
+button,
+label,
+th,
+td {
+  font-family: "Roboto", sans-serif;
+}
+.back-link {
+  font-size: 1.5em;
+}
+.create-btn {
+  width: 100%;
+  max-width: 768px;
+  padding: 3px 20px;
+}
+.create-time {
+  font-size: 1.2em;
+}
+.nav-form {
+  margin-bottom: 10px;
+}
+.activity-chkbox-group > div {
+  margin: 5px 0 12px 0;
+}
+.activity-chkbox-group > div label {
+  margin-left: 5px;
+}
+.badge {
+  display: inline-block;
+  padding: 3px 5px;
+  border-radius: 3px;
+}
+.badge-color-1 {
+  color: white;
+  background-color: #ffde7d;
+}
+.badge-color-2 {
+  color: white;
+  background-color: #11999e;
+}
+.badge-color-3 {
+  color: white;
+  background-color: #30e3ca;
+}
+.badge-color-4 {
+  color: black;
+  background-color: #ffcfdf;
+}
+.activity-table {
+  border-collapse: collapse;
+}
+.activity-table td {
+  border: 1px solid #cfcfcf;
+  padding: 0px;
+}
+.activity-table td span {
+  margin: 5px;
+}
+.activity-table tr > td:nth-child(1) {
+  font-size: 0.7em;
+  padding: 0 5px;
+}
+.activity-layout {
+  display: flex;
+  padding: 15px 0;
+}
+.activity-layout > form:nth-child(1) {
+  padding-right: 20px;
+}
+.create-layout {
+  display: flex;
+  margin-bottom: 10px;
+}
+@media only screen and (min-device-width: 375px) and (max-device-width: 812px) and (orientation: portrait) {
+  .activity-layout {
+    display: block;
+  }
+}
+
