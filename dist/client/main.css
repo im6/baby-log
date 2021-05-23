@@ -22,17 +22,6 @@ td {
 .back-link {
   font-size: 1.5em;
 }
-.create-btn {
-  width: 100%;
-  max-width: 768px;
-  padding: 3px 20px;
-}
-.create-time {
-  font-size: 1.2em;
-}
-.nav-form {
-  margin-bottom: 10px;
-}
 .activity-chkbox-group > div {
   margin: 8px 0;
 }
@@ -60,6 +49,27 @@ td {
   color: #705e87;
   background-color: #ffcfdf;
 }
+
+.create-layout {
+  display: flex;
+  margin-bottom: 10px;
+}
+.create-btn {
+  width: 100%;
+  max-width: 768px;
+  padding: 3px 20px;
+}
+.create-time {
+  font-size: 1.2em;
+}
+
+.activity-layout {
+  display: flex;
+  padding: 15px 0;
+}
+.activity-layout > form:nth-child(1) {
+  padding-right: 20px;
+}
 .activity-table {
   border-collapse: collapse;
 }
@@ -74,15 +84,7 @@ td {
   font-size: 0.7em;
   padding: 0 5px;
 }
-.activity-layout {
-  display: flex;
-  padding: 15px 0;
-}
-.activity-layout > form:nth-child(1) {
-  padding-right: 20px;
-}
-.create-layout {
-  display: flex;
+.nav-form {
   margin-bottom: 10px;
 }
 @media only screen and (min-device-width: 375px) and (max-device-width: 812px) and (orientation: portrait) {
