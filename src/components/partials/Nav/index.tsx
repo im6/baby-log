@@ -10,11 +10,7 @@ const Nav: FC<NavProps> = ({ allData, selected }) => {
   return (
     <form className="nav-form" action="/">
       <ActivityChkboxGroup allData={allData} selected={selected} />
-      <div>
-        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-        <input type="submit" value="Filter" />
-      </div>
-      <br />
+      <input type="submit" value="Filter" />
     </form>
   );
 };
