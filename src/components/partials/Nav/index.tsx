@@ -3,7 +3,7 @@ import ActivityChkboxGroup from "../ActivityChkboxGroup";
 
 interface NavProps {
   allData: any;
-  selected: any;
+  selected: number[];
 }
 
 const Nav: FC<NavProps> = ({ allData, selected }) => {

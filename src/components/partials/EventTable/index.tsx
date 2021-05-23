@@ -1,8 +1,9 @@
 import { FC } from "react";
+import { ActivityDef, EventTableRow } from "../../../interface";
 
 interface EventTableProps {
-  data: any;
-  activityDef: any;
+  data: EventTableRow[];
+  activityDef: ActivityDef[];
 }
 
 const EventTable: FC<EventTableProps> = ({ data, activityDef }) => {
@@ -16,12 +17,12 @@ const EventTable: FC<EventTableProps> = ({ data, activityDef }) => {
         <th>Time</th>
         <th>Event</th>
       </tr>
-      {data.map((v: any) => {
+      {data.map((v: EventTableRow) => {
         return (
           <tr key={v.time}>
             <td>{v.time}</td>
             <td>
-              {v.events.map((v1: string) => {
+              {v.events.map((v1: number) => {
                 return (
                   <span className={`badge badge-color-${v1}`} key={v1}>
                     {actMap[v1]}

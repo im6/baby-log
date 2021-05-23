@@ -1,11 +1,12 @@
 import { FC, Fragment } from "react";
 import Nav from "../../partials/Nav";
 import EventTable from "../../partials/EventTable";
+import { EventTableRow } from "../../../interface";
 
 interface ActivityProps {
   activityDefinition: any;
-  selectedActivity: any;
-  eventList: any;
+  selectedActivity: number[];
+  eventList: EventTableRow[];
 }
 
 const Activity: FC<ActivityProps> = ({

@@ -6,13 +6,10 @@ import Activity from "../components/pages/Activity";
 import CreatePage from "../components/pages/Create";
 import CreateResultPage from "../components/pages/CreateResult";
 import { generateTimeOptions, formatDate } from "./helper";
+import { ActivityDef, TimeOption, EventTableRow } from "../interface";
 
 interface FileMap {
   [key: string]: string;
-}
-interface Activity {
-  id: string;
-  name: string;
 }
 
 const fileMap: FileMap =
@@ -31,17 +28,17 @@ export const renderActivity = async (req: Request, res: Response) => {
   const actDefs: any = await mysql("select * from activity_def");
 
   let whereClause = null;
-  let selectedActivity = null;
+  let selectedActivity: number[];
 
   const { activity } = req.query;
   if (Array.isArray(activity)) {
-    selectedActivity = activity.map((v: any) => parseInt(v));
+    selectedActivity = activity.map((v: any) => parseInt(v, 10));
     whereClause = `WHERE activity_id in (${selectedActivity.join(",")})`;
   } else if (activity) {
     selectedActivity = [parseInt(activity.toString(), 10)];
     whereClause = `WHERE activity_id = ${activity}`;
   } else {
-    selectedActivity = actDefs.map((v: any) => v.id);
+    selectedActivity = actDefs.map((v: ActivityDef) => v.id);
     whereClause = "";
   }
 
@@ -60,7 +57,7 @@ export const renderActivity = async (req: Request, res: Response) => {
     return acc;
   }, {});
 
-  const eventList = Array.from(timeSet).map((v: any) => {
+  const eventList: EventTableRow[] = Array.from(timeSet).map((v: any) => {
     return {
       time: v,
       events: eventDict[v],
@@ -85,7 +82,7 @@ export const renderActivity = async (req: Request, res: Response) => {
 
 export const renderCreate = async (req: Request, res: Response) => {
   const now = new Date();
-  const timeOptions = generateTimeOptions(now);
+  const timeOptions: TimeOption[] = generateTimeOptions(now);
   const actDefs = await mysql("select * from activity_def");
   const htmlDOM = (
     <Html

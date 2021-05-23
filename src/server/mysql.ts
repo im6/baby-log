@@ -21,7 +21,7 @@ export default (qr: string) =>
       password,
       database: "baby_log",
     });
-    conn.query(qr, (error: any, results: any) => {
+    conn.query(qr, (error: Error, results) => {
       if (error) {
         reject(error);
       } else {

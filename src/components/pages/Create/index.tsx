@@ -1,10 +1,12 @@
 import { FC, Fragment } from "react";
 import BackLink from "../../partials/BackLink";
 import ActivityChkboxGroup from "../../partials/ActivityChkboxGroup";
+import { TimeOption } from "../../../interface";
+
 interface CreateProps {
-  selectedActivity: any;
+  selectedActivity: number[];
   activityDefinition: any;
-  timeOptions: any;
+  timeOptions: TimeOption[];
 }
 const CreatePage: FC<CreateProps> = ({
   activityDefinition,
@@ -19,7 +21,7 @@ const CreatePage: FC<CreateProps> = ({
           <label htmlFor="event-time">
             <h3>Time</h3>
           </label>
-          {timeOptions.map((v: any) => {
+          {timeOptions.map((v: TimeOption) => {
             const id = `time-options-${v.id}`;
             return (
               <div key={id}>

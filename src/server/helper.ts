@@ -1,10 +1,11 @@
 import { add, format } from "date-fns";
+import { TimeOption } from "../interface";
 
 const minDiffOptions = [
   -100, -90, -80, -70, -60, -50, -40, -30, -20, -10, 0, 10, 20,
 ];
 
-const generateDatePair = (dateObj: Date, showNow: boolean) => {
+const generateDatePair = (dateObj: Date, showNow: boolean): TimeOption => {
   const dayStr = `${dateObj.getFullYear()}-${
     dateObj.getMonth() + 1
   }-${dateObj.getDate()}`;
@@ -20,7 +21,7 @@ const generateDatePair = (dateObj: Date, showNow: boolean) => {
   };
 };
 
-export const generateTimeOptions = (now: Date) => {
+export const generateTimeOptions = (now: Date): TimeOption[] => {
   const yearVal = now.getFullYear();
   const monthVal = now.getMonth();
   const getDate = now.getDate();
@@ -49,5 +50,5 @@ export const generateTimeOptions = (now: Date) => {
 };
 
 export const formatDate = (rawDate: Date) => {
-  return format(rawDate, "yyyy-MM-dd HH:mm");
+  return format(rawDate, "MM-dd hh:mm a");
 };
