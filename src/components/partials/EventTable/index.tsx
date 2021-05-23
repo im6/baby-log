@@ -7,7 +7,7 @@ interface EventTableProps {
 }
 
 const EventTable: FC<EventTableProps> = ({ data, activityDef }) => {
-  const actMap = activityDef.reduce((acc: any, cur: any) => {
+  const actMap = activityDef.reduce((acc: any, cur: ActivityDef) => {
     acc[cur.id] = cur.name;
     return acc;
   }, {});

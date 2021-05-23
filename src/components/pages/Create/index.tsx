@@ -50,7 +50,11 @@ const CreatePage: FC<CreateProps> = ({
           />
         </div>
       </div>
-      <input className="create-btn" type="submit" value="Submit Event" />
+      <input
+        className="create-btn"
+        type="submit"
+        value="&#128316; Submit Event"
+      />
     </form>
   </Fragment>
 );
