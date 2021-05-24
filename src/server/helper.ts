@@ -49,6 +49,6 @@ export const generateTimeOptions = (now: Date): TimeOption[] => {
   return dateOptions;
 };
 
-export const formatDate = (rawDate: Date) => {
+export const formatDate = (rawDate: Date): string => {
   return format(rawDate, "MM-dd hh:mm a");
 };

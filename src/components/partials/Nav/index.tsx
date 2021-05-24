@@ -1,9 +1,9 @@
 import { FC } from "react";
 import ActivityChkboxGroup from "../ActivityChkboxGroup";
-import { ActivityDef } from "../../../interface";
+import { ActivityDefinitionSchema } from "../../../interface";
 
 interface NavProps {
-  allData: ActivityDef[];
+  allData: ActivityDefinitionSchema[];
   selected: number[];
 }
 

@@ -1,8 +1,18 @@
-export interface ActivityDef {
+// database schema
+export interface ActivityDefinitionSchema {
   id: number;
   name: string;
 }
 
+export interface LogSchema {
+  id: number;
+  event_time: Date;
+  activity_id: number;
+  activity_value: number;
+  child_id: number;
+}
+
+// application scope model
 export interface TimeOption {
   id: string;
   name: string;
@@ -11,5 +21,9 @@ export interface TimeOption {
 
 export interface EventTableRow {
   time: string;
-  events: number[];
+  events: ActivityDefinitionSchema[];
+}
+
+export interface EventMap {
+  [index: string]: ActivityDefinitionSchema[];
 }

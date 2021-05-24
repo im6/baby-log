@@ -1,11 +1,11 @@
 import { FC, Fragment } from "react";
 import BackLink from "../../partials/BackLink";
 import ActivityChkboxGroup from "../../partials/ActivityChkboxGroup";
-import { TimeOption } from "../../../interface";
+import { ActivityDefinitionSchema, TimeOption } from "../../../interface";
 
 interface CreateProps {
   selectedActivity: number[];
-  activityDefinition: any;
+  activityDefinition: ActivityDefinitionSchema[];
   timeOptions: TimeOption[];
 }
 

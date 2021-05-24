@@ -1,8 +1,8 @@
 import { FC } from "react";
-import { ActivityDef } from "../../../interface";
+import { ActivityDefinitionSchema } from "../../../interface";
 
 interface ActivityChkboxGroupProps {
-  allData: ActivityDef[];
+  allData: ActivityDefinitionSchema[];
   selected: number[];
 }
 
@@ -12,7 +12,7 @@ const ActivityChkboxGroup: FC<ActivityChkboxGroupProps> = ({
 }) => {
   return (
     <div className="activity-chkbox-group">
-      {allData.map((v: ActivityDef) => {
+      {allData.map((v: ActivityDefinitionSchema) => {
         return (
           <div key={v.id}>
             <input

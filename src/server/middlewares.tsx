@@ -6,7 +6,13 @@ import Activity from "../components/pages/Activity";
 import CreatePage from "../components/pages/Create";
 import CreateResultPage from "../components/pages/CreateResult";
 import { generateTimeOptions, formatDate } from "./helper";
-import { ActivityDef, TimeOption, EventTableRow } from "../interface";
+import {
+  ActivityDefinitionSchema,
+  EventMap,
+  EventTableRow,
+  LogSchema,
+  TimeOption,
+} from "../interface";
 
 interface FileMap {
   [key: string]: string;
@@ -25,7 +31,14 @@ const fileMap: FileMap =
 const childId = 1;
 
 export const renderActivity = async (req: Request, res: Response) => {
-  const actDefs: any = await mysql("select * from activity_def");
+  const actDefs = (await mysql(
+    "select * from activity_def"
+  )) as ActivityDefinitionSchema[];
+
+  const actMap = actDefs.reduce((acc: any, cur: ActivityDefinitionSchema) => {
+    acc[cur.id] = cur;
+    return acc;
+  }, {});
 
   let whereClause = null;
   let selectedActivity: number[];
@@ -38,23 +51,24 @@ export const renderActivity = async (req: Request, res: Response) => {
     selectedActivity = [parseInt(activity.toString(), 10)];
     whereClause = `WHERE activity_id = ${activity}`;
   } else {
-    selectedActivity = actDefs.map((v: ActivityDef) => v.id);
+    selectedActivity = actDefs.map((v: ActivityDefinitionSchema) => v.id);
     whereClause = "";
   }
 
   const query = `SELECT * FROM logs ${whereClause} ORDER BY event_time DESC LIMIT 200`;
-  const logs: any = await mysql(query);
+  const logs = (await mysql(query)) as LogSchema[];
 
   const timeSet = new Set();
-  const eventDict = logs.reduce((acc: any, cur: any) => {
-    const date = formatDate(cur.event_time);
-    timeSet.add(date);
-    if (date in acc) {
-      acc[date].push(cur.activity_id);
+  const eventDict: EventMap = {};
+  logs.forEach((cur: LogSchema) => {
+    const date: string = formatDate(cur.event_time);
+    if (date in eventDict) {
+      eventDict[date].push(actMap[cur.activity_id]);
     } else {
-      acc[date] = [cur.activity_id];
+      eventDict[date] = [actMap[cur.activity_id]];
     }
-    return acc;
+
+    timeSet.add(date);
   }, {});
 
   const eventList: EventTableRow[] = Array.from(timeSet).map((v: any) => {
@@ -83,7 +97,9 @@ export const renderActivity = async (req: Request, res: Response) => {
 export const renderCreate = async (req: Request, res: Response) => {
   const now = new Date();
   const timeOptions: TimeOption[] = generateTimeOptions(now);
-  const actDefs = await mysql("select * from activity_def");
+  const actDefs = (await mysql(
+    "select * from activity_def"
+  )) as ActivityDefinitionSchema[];
   const htmlDOM = (
     <Html
       title="Create an event"

@@ -1,10 +1,10 @@
 import { FC, Fragment } from "react";
 import Nav from "../../partials/Nav";
 import EventTable from "../../partials/EventTable";
-import { EventTableRow } from "../../../interface";
+import { ActivityDefinitionSchema, EventTableRow } from "../../../interface";
 
 interface ActivityProps {
-  activityDefinition: any;
+  activityDefinition: ActivityDefinitionSchema[];
   selectedActivity: number[];
   eventList: EventTableRow[];
 }
@@ -24,7 +24,7 @@ const Activity: FC<ActivityProps> = ({
     </div>
     <div className="activity-layout">
       <Nav allData={activityDefinition} selected={selectedActivity} />
-      <EventTable data={eventList} activityDef={activityDefinition} />
+      <EventTable data={eventList} />
     </div>
   </Fragment>
 );
