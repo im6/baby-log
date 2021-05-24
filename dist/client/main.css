@@ -15,7 +15,6 @@ span,
 button,
 input,
 label,
-th,
 td {
   font-family: "Prompt", sans-serif;
 }
@@ -65,10 +64,10 @@ td {
 
 .activity-layout {
   display: flex;
-  padding: 15px 0;
+  padding: 15px 0 0 0;
 }
 .activity-layout > form:nth-child(1) {
-  padding-right: 20px;
+  margin: 0 20px 0 0;
 }
 .activity-table {
   border-collapse: collapse;
@@ -84,12 +83,23 @@ td {
   font-size: 0.7em;
   padding: 0 5px;
 }
-.nav-form {
-  margin-bottom: 10px;
+.nav-form input[type="submit"] {
+  width: 100%;
 }
 @media only screen and (min-device-width: 375px) and (max-device-width: 812px) and (orientation: portrait) {
   .activity-layout {
     display: block;
+    padding: 0;
+  }
+  .activity-layout > form:nth-child(1) {
+    margin: 0 0 10px 0;
+  }
+  .activity-layout .activity-chkbox-group > div {
+    display: inline-block;
+    width: 48%;
+  }
+  .activity-layout .activity-chkbox-group > div label {
+    width: 110px;
   }
 }
 

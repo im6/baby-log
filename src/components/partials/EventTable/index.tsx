@@ -13,10 +13,6 @@ const EventTable: FC<EventTableProps> = ({ data, activityDef }) => {
   }, {});
   return (
     <table className="activity-table">
-      <tr>
-        <th>Time</th>
-        <th>Event</th>
-      </tr>
       {data.map((v: EventTableRow) => {
         return (
           <tr key={v.time}>
