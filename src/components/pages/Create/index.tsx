@@ -8,6 +8,7 @@ interface CreateProps {
   activityDefinition: any;
   timeOptions: TimeOption[];
 }
+
 const CreatePage: FC<CreateProps> = ({
   activityDefinition,
   selectedActivity,
@@ -18,9 +19,7 @@ const CreatePage: FC<CreateProps> = ({
     <form action="/create-event" method="post">
       <div className="create-layout">
         <div>
-          <label htmlFor="event-time">
-            <h3>Time</h3>
-          </label>
+          <label htmlFor="event-time">Time</label>
           {timeOptions.map((v: TimeOption) => {
             const id = `time-options-${v.id}`;
             return (
@@ -41,9 +40,7 @@ const CreatePage: FC<CreateProps> = ({
         </div>
 
         <div>
-          <label htmlFor="selected-activity">
-            <h3>Activity</h3>
-          </label>
+          <label htmlFor="selected-activity">Activity</label>
           <ActivityChkboxGroup
             selected={selectedActivity}
             allData={activityDefinition}
