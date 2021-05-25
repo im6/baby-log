@@ -1,7 +1,3 @@
 # Baby Logs
 
-## Install
-
-```sh
-yarn install
-```
+![preview](https://github.com/im6/baby-log/raw/master/assets/preview.png)
