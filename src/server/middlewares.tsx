@@ -14,11 +14,11 @@ import {
   TimeOption,
 } from "../interface";
 
-interface FileMap {
+interface FileMapType {
   [key: string]: string;
 }
 
-const fileMap: FileMap =
+const fileMap: FileMapType =
   process.env.NODE_ENV === "development"
     ? {
         "app.js": "./local/client/index.js",
@@ -35,17 +35,23 @@ export const renderActivity = async (req: Request, res: Response) => {
     "select * from activity_def"
   )) as ActivityDefinitionSchema[];
 
-  const actMap = actDefs.reduce((acc: any, cur: ActivityDefinitionSchema) => {
-    acc[cur.id] = cur;
-    return acc;
-  }, {});
+  const actMap = actDefs.reduce(
+    (
+      acc: Record<number, ActivityDefinitionSchema>,
+      cur: ActivityDefinitionSchema
+    ) => {
+      acc[cur.id] = cur;
+      return acc;
+    },
+    {}
+  );
 
   let whereClause = null;
   let selectedActivity: number[];
 
   const { activity } = req.query;
   if (Array.isArray(activity)) {
-    selectedActivity = activity.map((v: any) => parseInt(v, 10));
+    selectedActivity = (activity as string[]).map((v) => parseInt(v, 10));
     whereClause = `WHERE activity_id in (${selectedActivity.join(",")})`;
   } else if (activity) {
     selectedActivity = [parseInt(activity.toString(), 10)];
@@ -71,7 +77,8 @@ export const renderActivity = async (req: Request, res: Response) => {
     timeSet.add(date);
   }, {});
 
-  const eventList: EventTableRow[] = Array.from(timeSet).map((v: any) => {
+  const timeArray = Array.from(timeSet) as string[];
+  const eventList: EventTableRow[] = timeArray.map((v: string) => {
     return {
       time: v,
       events: eventDict[v],
