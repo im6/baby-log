@@ -14,9 +14,9 @@ const EventTable: FC<EventTableProps> = ({ data }) => (
           <td>
             {v.events.map((v1: EventActivity) => {
               return (
-                <a href={`/delete-confirm/${v1.eventId}`} key={v1.id}>
-                  <span className={`badge badge-color-${v1.id}`}>
-                    {v1.name}
+                <a href={`/delete-confirm/${v1.id}`} key={v1.id}>
+                  <span className={`badge badge-color-${v1.activity_id}`}>
+                    {v1.activity_name}
                   </span>
                 </a>
               );

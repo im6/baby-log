@@ -9,6 +9,7 @@ import ActionResultPage from "../components/pages/ActionResult";
 import { generateTimeOptions, formatDate } from "./helper";
 import {
   ActivityDefinitionSchema,
+  EventActivity,
   EventMap,
   EventTableRow,
   LogSchema,
@@ -71,14 +72,14 @@ export const renderActivity = async (req: Request, res: Response) => {
     const date: string = formatDate(cur.event_time);
     if (date in eventDict) {
       eventDict[date].push({
-        eventId: cur.id,
-        ...actMap[cur.activity_id],
+        activity_name: actMap[cur.activity_id].name,
+        ...cur,
       });
     } else {
       eventDict[date] = [
         {
-          eventId: cur.id,
-          ...actMap[cur.activity_id],
+          activity_name: actMap[cur.activity_id].name,
+          ...cur,
         },
       ];
     }
@@ -150,7 +151,7 @@ export const renderCreateResult = async (req: Request, res: Response) => {
   } else {
     const htmlDOM = (
       <Html title="Failed" criticalCss={process.env.NODE_ENV !== "development"}>
-        <ActionResultPage error={true} />
+        <ActionResultPage message="Creating event failed" error />
       </Html>
     );
     const html = renderToStaticMarkup(htmlDOM);
@@ -160,7 +161,7 @@ export const renderCreateResult = async (req: Request, res: Response) => {
   }
   const htmlDOM = (
     <Html title="Succeed" criticalCss={process.env.NODE_ENV !== "development"}>
-      <ActionResultPage error={false} />
+      <ActionResultPage message="Creating event succeeded" error={false} />
     </Html>
   );
   const html = renderToStaticMarkup(htmlDOM);
@@ -169,14 +170,41 @@ export const renderCreateResult = async (req: Request, res: Response) => {
 };
 
 export const renderDeleteConfirm = async (req: Request, res: Response) => {
+  const targetLogRows = (await mysql(`SELECT * from logs where id = ?`, [
+    req.params.id,
+  ])) as LogSchema[];
+  if (targetLogRows.length !== 1) {
+    res.status(400);
+    res.send("error: event search error");
+    return;
+  }
+  const eventRow = targetLogRows[0];
+  const targetActivityRow = (await mysql(
+    `SELECT * from activity_def where id = ?`,
+    [eventRow.activity_id.toString()]
+  )) as ActivityDefinitionSchema[];
+
+  if (targetActivityRow.length !== 1) {
+    res.status(400);
+    res.send("error: activity search error");
+    return;
+  }
+
+  const viewModel: EventActivity = {
+    id: parseInt(req.params.id, 10),
+    event_time: eventRow.event_time,
+    activity_id: eventRow.activity_id,
+    activity_name: targetActivityRow[0].name,
+    activity_value: eventRow.activity_value,
+    child_id: eventRow.child_id,
+  };
+
   const htmlDOM = (
     <Html
       title="Delete an event activity"
       criticalCss={process.env.NODE_ENV !== "development"}
     >
-      <DeletePage
-        data={{ eventId: parseInt(req.params.id), id: 2, name: "unknow" }}
-      />
+      <DeletePage {...viewModel} />
     </Html>
   );
   const html = renderToStaticMarkup(htmlDOM);
@@ -185,14 +213,30 @@ export const renderDeleteConfirm = async (req: Request, res: Response) => {
 };
 
 export const renderDeleteResult = async (req: Request, res: Response) => {
-  const htmlDOM = (
-    <Html title="Succeed" criticalCss={process.env.NODE_ENV !== "development"}>
-      <h1>delete success</h1>
-    </Html>
-  );
-  const html = renderToStaticMarkup(htmlDOM);
-  res.status(200);
-  res.send(`<!DOCTYPE html>${html}`);
+  try {
+    await mysql(`DELETE from logs WHERE id = ?`, [req.body.id]);
+
+    const htmlDOM = (
+      <Html
+        title="Successfully "
+        criticalCss={process.env.NODE_ENV !== "development"}
+      >
+        <ActionResultPage message="Deleting event succeeded" error={false} />
+      </Html>
+    );
+    const html = renderToStaticMarkup(htmlDOM);
+    res.status(200);
+    res.send(`<!DOCTYPE html>${html}`);
+  } catch (error) {
+    const htmlDOM = (
+      <Html title="Failed" criticalCss={process.env.NODE_ENV !== "development"}>
+        <ActionResultPage message="Deleting event failed" error />
+      </Html>
+    );
+    const html = renderToStaticMarkup(htmlDOM);
+    res.status(500);
+    res.send(`<!DOCTYPE html>${html}`);
+  }
 };
 
 export const renderStatic = (req: Request, res: Response) => {

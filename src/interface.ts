@@ -19,8 +19,8 @@ export interface TimeOption {
   isNow: boolean;
 }
 
-export interface EventActivity extends ActivityDefinitionSchema {
-  eventId: number;
+export interface EventActivity extends LogSchema {
+  activity_name: string;
 }
 
 export interface EventTableRow {
