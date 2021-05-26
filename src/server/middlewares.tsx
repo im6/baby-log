@@ -4,7 +4,7 @@ import mysql from "./mysql";
 import Html from "../components/layout/Html";
 import Activity from "../components/pages/Activity";
 import CreatePage from "../components/pages/Create";
-import CreateResultPage from "../components/pages/CreateResult";
+import ActionResultPage from "../components/pages/ActionResult";
 import { generateTimeOptions, formatDate } from "./helper";
 import {
   ActivityDefinitionSchema,
@@ -141,7 +141,7 @@ export const renderCreateResult = async (req: Request, res: Response) => {
   } else {
     const htmlDOM = (
       <Html title="Failed" criticalCss={process.env.NODE_ENV !== "development"}>
-        <CreateResultPage error={true} />
+        <ActionResultPage error={true} />
       </Html>
     );
     const html = renderToStaticMarkup(htmlDOM);
@@ -151,7 +151,7 @@ export const renderCreateResult = async (req: Request, res: Response) => {
   }
   const htmlDOM = (
     <Html title="Succeed" criticalCss={process.env.NODE_ENV !== "development"}>
-      <CreateResultPage error={false} />
+      <ActionResultPage error={false} />
     </Html>
   );
   const html = renderToStaticMarkup(htmlDOM);

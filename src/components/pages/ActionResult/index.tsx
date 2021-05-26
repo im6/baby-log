@@ -1,11 +1,11 @@
 import { FC, Fragment } from "react";
 import BackLink from "../../partials/BackLink";
 
-interface CreateResultProps {
+interface ActionResultProps {
   error: boolean;
 }
 
-const CreateResultPage: FC<CreateResultProps> = ({ error }) => {
+const ActionResultPage: FC<ActionResultProps> = ({ error }) => {
   const resultText = error ? "failed" : "succeed";
   const createIcon = () => {
     return { __html: error ? "&#10060;" : "&#9989;" };
@@ -21,4 +21,4 @@ const CreateResultPage: FC<CreateResultProps> = ({ error }) => {
   );
 };
 
-export default CreateResultPage;
+export default ActionResultPage;
