@@ -1,5 +1,5 @@
 import { add, format } from "date-fns";
-import { TimeOption } from "../interface";
+import { TimeOption } from "./interface";
 
 const minDiffOptions = [
   -100, -90, -80, -70, -60, -50, -40, -30, -20, -10, 0, 10, 20,

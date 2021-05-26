@@ -5,6 +5,7 @@ import {
   renderCreateResult,
   renderDeleteConfirm,
   renderDeleteResult,
+  renderError,
   renderStatic,
 } from "./middlewares";
 
@@ -15,13 +16,14 @@ app.use(
   })
 );
 
-app.get("/static/:name", renderStatic);
 app.get("/create", renderCreate);
 app.get("/delete-confirm/:id", renderDeleteConfirm);
 
 app.post("/create-event", renderCreateResult);
 app.post("/delete-event", renderDeleteResult);
 
+app.get("/error", renderError);
+app.get("/static/:name", renderStatic);
 app.get("/", renderActivity);
 
 export default app;

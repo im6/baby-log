@@ -1,7 +1,7 @@
 import { FC, Fragment } from "react";
 import BackLink from "../../partials/BackLink";
 import { EventActivity } from "../../../interface";
-import { formatDate } from "../../../server/helper";
+import { formatDate } from "../../../helper";
 
 const DeletePage: FC<EventActivity> = ({
   id,
