@@ -16,11 +16,7 @@ import {
   TimeOption,
 } from "../interface";
 
-interface FileMapType {
-  [key: string]: string;
-}
-
-const fileMap: FileMapType =
+const fileMap: Record<string, string> =
   process.env.NODE_ENV === "development"
     ? {
         "app.js": "./local/client/index.js",
