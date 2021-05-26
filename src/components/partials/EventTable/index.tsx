@@ -1,5 +1,5 @@
 import { FC } from "react";
-import { ActivityDefinitionSchema, EventTableRow } from "../../../interface";
+import { EventActivity, EventTableRow } from "../../../interface";
 
 interface EventTableProps {
   data: EventTableRow[];
@@ -12,11 +12,13 @@ const EventTable: FC<EventTableProps> = ({ data }) => (
         <tr key={v.time}>
           <td>{v.time}</td>
           <td>
-            {v.events.map((v1: ActivityDefinitionSchema) => {
+            {v.events.map((v1: EventActivity) => {
               return (
-                <span className={`badge badge-color-${v1.id}`} key={v1.id}>
-                  {v1.name}
-                </span>
+                <a href={`/delete-confirm/${v1.eventId}`} key={v1.id}>
+                  <span className={`badge badge-color-${v1.id}`}>
+                    {v1.name}
+                  </span>
+                </a>
               );
             })}
           </td>

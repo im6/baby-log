@@ -19,11 +19,15 @@ export interface TimeOption {
   isNow: boolean;
 }
 
+export interface EventActivity extends ActivityDefinitionSchema {
+  eventId: number;
+}
+
 export interface EventTableRow {
   time: string;
-  events: ActivityDefinitionSchema[];
+  events: EventActivity[];
 }
 
 export interface EventMap {
-  [index: string]: ActivityDefinitionSchema[];
+  [index: string]: EventActivity[];
 }

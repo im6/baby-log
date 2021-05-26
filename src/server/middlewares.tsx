@@ -4,6 +4,7 @@ import mysql from "./mysql";
 import Html from "../components/layout/Html";
 import Activity from "../components/pages/Activity";
 import CreatePage from "../components/pages/Create";
+import DeletePage from "../components/pages/Delete";
 import ActionResultPage from "../components/pages/ActionResult";
 import { generateTimeOptions, formatDate } from "./helper";
 import {
@@ -69,9 +70,17 @@ export const renderActivity = async (req: Request, res: Response) => {
   logs.forEach((cur: LogSchema) => {
     const date: string = formatDate(cur.event_time);
     if (date in eventDict) {
-      eventDict[date].push(actMap[cur.activity_id]);
+      eventDict[date].push({
+        eventId: cur.id,
+        ...actMap[cur.activity_id],
+      });
     } else {
-      eventDict[date] = [actMap[cur.activity_id]];
+      eventDict[date] = [
+        {
+          eventId: cur.id,
+          ...actMap[cur.activity_id],
+        },
+      ];
     }
 
     timeSet.add(date);
@@ -152,6 +161,33 @@ export const renderCreateResult = async (req: Request, res: Response) => {
   const htmlDOM = (
     <Html title="Succeed" criticalCss={process.env.NODE_ENV !== "development"}>
       <ActionResultPage error={false} />
+    </Html>
+  );
+  const html = renderToStaticMarkup(htmlDOM);
+  res.status(200);
+  res.send(`<!DOCTYPE html>${html}`);
+};
+
+export const renderDeleteConfirm = async (req: Request, res: Response) => {
+  const htmlDOM = (
+    <Html
+      title="Delete an event activity"
+      criticalCss={process.env.NODE_ENV !== "development"}
+    >
+      <DeletePage
+        data={{ eventId: parseInt(req.params.id), id: 2, name: "unknow" }}
+      />
+    </Html>
+  );
+  const html = renderToStaticMarkup(htmlDOM);
+  res.status(200);
+  res.send(`<!DOCTYPE html>${html}`);
+};
+
+export const renderDeleteResult = async (req: Request, res: Response) => {
+  const htmlDOM = (
+    <Html title="Succeed" criticalCss={process.env.NODE_ENV !== "development"}>
+      <h1>delete success</h1>
     </Html>
   );
   const html = renderToStaticMarkup(htmlDOM);
