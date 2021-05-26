@@ -128,12 +128,16 @@ export const renderCreateResult = async (req: Request, res: Response) => {
   const { time, activity } = req.body;
   if (Array.isArray(activity)) {
     activity.forEach(async (v: string) => {
-      const query = `INSERT INTO logs (event_time, activity_id, child_id) VALUES ('${time}', '${v}', ${childId})`;
-      await mysql(query);
+      await mysql(
+        `INSERT INTO logs (event_time, activity_id, child_id) VALUES (?, ?, ?)`,
+        [time, v, childId]
+      );
     });
   } else if (activity) {
-    const query = `INSERT INTO logs (event_time, activity_id, child_id) VALUES ('${time}', '${activity}', ${childId})`;
-    await mysql(query);
+    await mysql(
+      `INSERT INTO logs (event_time, activity_id, child_id) VALUES (?, ?, ?)`,
+      [time, activity, childId]
+    );
   } else {
     const htmlDOM = (
       <Html title="Failed" criticalCss={process.env.NODE_ENV !== "development"}>

@@ -13,7 +13,7 @@ const {
   SQL_PASSWORD: password,
 } = process.env;
 
-export default (qr: string) =>
+export default (qr: string, placeholder?: string[]) =>
   new Promise((resolve, reject) => {
     const conn = createConnection({
       host,
@@ -21,7 +21,7 @@ export default (qr: string) =>
       password,
       database: "baby_log",
     });
-    conn.query(qr, (error: Error, results) => {
+    conn.query(qr, placeholder, (error, results) => {
       if (error) {
         reject(error);
       } else {
