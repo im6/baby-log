@@ -59,7 +59,7 @@ export const renderActivity = async (req: Request, res: Response) => {
     whereClause = "";
   }
 
-  const query = `SELECT * FROM logs ${whereClause} ORDER BY event_time DESC LIMIT 200`;
+  const query = `SELECT * FROM logs ${whereClause} ORDER BY event_time DESC LIMIT 100`;
   const logs = (await mysql(query)) as LogSchema[];
 
   const timeSet = new Set();
