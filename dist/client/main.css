@@ -27,6 +27,11 @@ td {
 .activity-chkbox-group > div label {
   margin-left: 5px;
 }
+.wide-btn {
+  width: 100%;
+  max-width: 768px;
+  padding: 3px 20px;
+}
 .badge {
   display: inline-block;
   padding: 3px 5px;
@@ -52,11 +57,6 @@ td {
 .create-layout {
   display: flex;
   margin-bottom: 10px;
-}
-.create-btn {
-  width: 100%;
-  max-width: 768px;
-  padding: 3px 20px;
 }
 .create-time {
   font-size: 1.2em;
