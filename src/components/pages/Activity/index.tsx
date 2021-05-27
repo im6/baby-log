@@ -17,7 +17,7 @@ const Activity: FC<ActivityProps> = ({
   <Fragment>
     <div>
       <a href="/create">
-        <button type="button" className="create-btn">
+        <button type="button" className="wide-btn">
           &#10133; Create Event
         </button>
       </a>

@@ -22,11 +22,7 @@ const DeletePage: FC<EventActivity> = ({
         </h3>
         <input type="hidden" name="id" value={id} />
       </div>
-      <input
-        className="create-btn"
-        type="submit"
-        value="&#9940; Delete Event"
-      />
+      <input className="wide-btn" type="submit" value="&#9940; Delete Event" />
     </form>
   </Fragment>
 );

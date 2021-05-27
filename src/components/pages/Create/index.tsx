@@ -48,7 +48,7 @@ const CreatePage: FC<CreateProps> = ({
         </div>
       </div>
       <input
-        className="create-btn"
+        className="wide-btn"
         type="submit"
         value="&#128316; Submit Event"
       />

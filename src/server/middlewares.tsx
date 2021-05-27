@@ -166,29 +166,24 @@ export const renderCreateResult = async (req: Request, res: Response) => {
 };
 
 export const renderDeleteConfirm = async (req: Request, res: Response) => {
-  const targetLogRows = (await mysql(`SELECT * from logs where id = ?`, [
-    req.params.id,
-  ])) as LogSchema[];
+  const targetLogRows = (await mysql(
+    `SELECT
+      a1.*, a2.name as activity_name
+    FROM logs a1 LEFT JOIN activity_def a2
+      ON a1.activity_id = a2.id
+    WHERE a1.id = ?`,
+    [req.params.id]
+  )) as EventActivity[];
   if (targetLogRows.length !== 1) {
     res.redirect("/error");
     return;
   }
   const eventRow = targetLogRows[0];
-  const targetActivityRow = (await mysql(
-    `SELECT * from activity_def where id = ?`,
-    [eventRow.activity_id.toString()]
-  )) as ActivityDefinitionSchema[];
-
-  if (targetActivityRow.length !== 1) {
-    res.redirect("/error");
-    return;
-  }
-
   const viewModel: EventActivity = {
     id: parseInt(req.params.id, 10),
     event_time: eventRow.event_time,
     activity_id: eventRow.activity_id,
-    activity_name: targetActivityRow[0].name,
+    activity_name: eventRow.activity_name,
     activity_value: eventRow.activity_value,
     child_id: eventRow.child_id,
   };
