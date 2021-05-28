@@ -20,23 +20,25 @@ const CreatePage: FC<CreateProps> = ({
       <div className="create-layout">
         <div>
           <label htmlFor="event-time">Time</label>
-          {timeOptions.map((v: TimeOption) => {
-            const id = `time-options-${v.id}`;
-            return (
-              <div key={id}>
-                <input
-                  type="radio"
-                  id={id}
-                  name="time"
-                  value={v.id}
-                  defaultChecked={v.isNow}
-                />
-                <label className="create-time" htmlFor={id}>
-                  {v.name}
-                </label>
-              </div>
-            );
-          })}
+          <div className="create-time-list">
+            {timeOptions.map((v: TimeOption) => {
+              const id = `time-options-${v.id}`;
+              return (
+                <div key={id}>
+                  <input
+                    type="radio"
+                    id={id}
+                    name="time"
+                    value={v.id}
+                    defaultChecked={v.isNow}
+                  />
+                  <label className="create-time" htmlFor={id}>
+                    {v.name}
+                  </label>
+                </div>
+              );
+            })}
+          </div>
         </div>
 
         <div>

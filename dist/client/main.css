@@ -56,7 +56,14 @@ td {
 
 .create-layout {
   display: flex;
-  margin-bottom: 10px;
+  margin-bottom: 20px;
+}
+.create-layout > div {
+  width: 50%;
+}
+.create-layout .create-time-list {
+  height: 360px;
+  overflow-y: auto;
 }
 .create-time {
   font-size: 1.2em;

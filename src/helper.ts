@@ -1,9 +1,7 @@
 import { add, format } from "date-fns";
 import { TimeOption } from "./interface";
 
-const minDiffOptions = [
-  -100, -90, -80, -70, -60, -50, -40, -30, -20, -10, 0, 10, 20,
-];
+const diffRange = [-200, 10];
 
 const generateDatePair = (dateObj: Date, showNow: boolean): TimeOption => {
   const dayStr = `${dateObj.getFullYear()}-${
@@ -34,6 +32,11 @@ export const generateTimeOptions = (now: Date): TimeOption[] => {
   const nowBase = new Date(yearVal, monthVal, getDate, hourVal, minVal, 0);
   const floorBase = new Date(yearVal, monthVal, getDate, hourVal, floorMin, 0);
 
+  const minDiffOptions = [];
+  for (let i = diffRange[1]; i >= diffRange[0]; i -= 10) {
+    minDiffOptions.push(i);
+  }
+
   const dateOptions = minDiffOptions.map((v: number) => {
     const timeVal = add(floorBase, {
       minutes: v,
@@ -42,7 +45,7 @@ export const generateTimeOptions = (now: Date): TimeOption[] => {
   });
 
   if (!isFloorMin) {
-    const insertIndex = minDiffOptions.indexOf(0) + 1;
+    const insertIndex = minDiffOptions.indexOf(0);
     dateOptions.splice(insertIndex, 0, generateDatePair(nowBase, true));
   }
 
