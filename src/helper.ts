@@ -1,7 +1,7 @@
 import { add, format } from "date-fns";
 import { TimeOption } from "./interface";
 
-const diffRange = [-200, 10];
+const diffRange = [-400, 10];
 
 const generateDatePair = (dateObj: Date, showNow: boolean): TimeOption => {
   const dayStr = `${dateObj.getFullYear()}-${
