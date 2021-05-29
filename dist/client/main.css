@@ -94,6 +94,9 @@ td {
 .activity-table td span {
   margin: 5px;
 }
+.activity-table td:nth-child(1) {
+  min-width: 90px;
+}
 .activity-table tr > td:nth-child(1) {
   font-size: 0.7em;
   padding: 0 5px;
