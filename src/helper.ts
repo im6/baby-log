@@ -2,6 +2,7 @@ import { add, format } from "date-fns";
 import { TimeOption } from "./interface";
 
 const diffRange = [-400, 10];
+const timeStep = 10;
 
 const generateDatePair = (dateObj: Date, showNow: boolean): TimeOption => {
   const dayStr = `${dateObj.getFullYear()}-${
@@ -33,7 +34,7 @@ export const generateTimeOptions = (now: Date): TimeOption[] => {
   const floorBase = new Date(yearVal, monthVal, getDate, hourVal, floorMin, 0);
 
   const minDiffOptions = [];
-  for (let i = diffRange[1]; i >= diffRange[0]; i -= 10) {
+  for (let i = diffRange[1]; i >= diffRange[0]; i -= timeStep) {
     minDiffOptions.push(i);
   }
 
