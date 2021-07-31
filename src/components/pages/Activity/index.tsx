@@ -1,7 +1,9 @@
 import { FC, Fragment } from "react";
 import Nav from "../../partials/Nav";
 import EventTable from "../../partials/EventTable";
+import WideButton from "../../partials/WideButton";
 import { ActivityDefinitionSchema, EventTableRow } from "../../../interface";
+import style from "./style.module.less";
 
 interface ActivityProps {
   activityDefinition: ActivityDefinitionSchema[];
@@ -17,12 +19,10 @@ const Activity: FC<ActivityProps> = ({
   <Fragment>
     <div>
       <a href="/create">
-        <button type="button" className="wide-btn">
-          &#10133; Create Event
-        </button>
+        <WideButton type="button">&#10133; Create Event</WideButton>
       </a>
     </div>
-    <div className="activity-layout">
+    <div className={style.layout}>
       <Nav allData={activityDefinition} selected={selectedActivity} />
       <EventTable data={eventList} />
     </div>

@@ -1,7 +1,8 @@
 import { FC } from "react";
+import style from "./style.module.less";
 
 const BackLink: FC = () => (
-  <a className="back-link" href="/">
+  <a className={style.link} href="/">
     Back to logs
   </a>
 );

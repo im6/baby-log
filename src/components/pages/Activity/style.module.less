@@ -1,0 +1,17 @@
+.layout {
+  display: flex;
+  padding: 15px 0 0 0;
+  & > form:nth-child(1) {
+    margin: 0 20px 0 0;
+  }
+}
+
+@media only screen and (min-device-width: 375px) and (max-device-width: 812px) and (orientation: portrait) {
+  .layout {
+    display: block;
+    padding: 0;
+    & > form:nth-child(1) {
+      margin: 0 0 10px 0;
+    }
+  }
+}

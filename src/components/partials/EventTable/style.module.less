@@ -1,0 +1,19 @@
+.table {
+  border-collapse: collapse;
+  td {
+    border: 1px solid #cfcfcf;
+    padding: 0px;
+    span {
+      margin: 5px;
+    }
+    &:nth-child(1) {
+      min-width: 90px;
+    }
+  }
+  tr {
+    & > td:nth-child(1) {
+      font-size: 0.7em;
+      padding: 0 5px;
+    }
+  }
+}

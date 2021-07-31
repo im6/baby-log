@@ -1,6 +1,7 @@
 import { FC } from "react";
 import ActivityChkboxGroup from "../ActivityChkboxGroup";
 import { ActivityDefinitionSchema } from "../../../interface";
+import style from "./style.module.less";
 
 interface NavProps {
   allData: ActivityDefinitionSchema[];
@@ -9,7 +10,7 @@ interface NavProps {
 
 const Nav: FC<NavProps> = ({ allData, selected }) => {
   return (
-    <form className="nav-form" action="/">
+    <form className={style.nav} action="/">
       <ActivityChkboxGroup allData={allData} selected={selected} />
       <input type="submit" value="&#128269; Filter" />
     </form>

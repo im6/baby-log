@@ -1,7 +1,10 @@
 import { FC, Fragment } from "react";
 import BackLink from "../../partials/BackLink";
+import WideButton from "../../partials/WideButton";
+import Badge from "../../partials/Badge";
 import { EventActivity } from "../../../interface";
 import { formatDate } from "../../../helper";
+import style from "./style.module.less";
 
 const DeletePage: FC<EventActivity> = ({
   id,
@@ -12,17 +15,15 @@ const DeletePage: FC<EventActivity> = ({
   <Fragment>
     <BackLink />
     <form action="/delete-event" method="post">
-      <div className="delete-layout">
+      <div className={style.layout}>
         <h3>
           &#9995; Are you sure you want to DELETE&nbsp;
-          <span className={`badge badge-color-${activity_id}`}>
-            {activity_name}
-          </span>
+          <Badge activityId={activity_id} text={activity_name} />
           &nbsp;at <u>{formatDate(event_time)}</u>?
         </h3>
         <input type="hidden" name="id" value={id} />
       </div>
-      <input className="wide-btn" type="submit" value="&#9940; Delete Event" />
+      <WideButton type="submit">&#9940; Delete Event</WideButton>
     </form>
   </Fragment>
 );

@@ -1,5 +1,7 @@
 import { FC } from "react";
 import { ActivityDefinitionSchema } from "../../../interface";
+import Badge from "../Badge";
+import style from "./style.module.less";
 
 interface ActivityChkboxGroupProps {
   allData: ActivityDefinitionSchema[];
@@ -11,7 +13,7 @@ const ActivityChkboxGroup: FC<ActivityChkboxGroupProps> = ({
   selected,
 }) => {
   return (
-    <div className="activity-chkbox-group">
+    <div className={style.chkBoxGroup}>
       {allData.map((v: ActivityDefinitionSchema) => {
         return (
           <div key={v.id}>
@@ -22,11 +24,8 @@ const ActivityChkboxGroup: FC<ActivityChkboxGroupProps> = ({
               value={v.id}
               defaultChecked={selected.includes(v.id)}
             />
-            <label
-              className={`badge badge-color-${v.id}`}
-              htmlFor={`nav-chkbox-option-${v.id}`}
-            >
-              {v.name}
+            <label htmlFor={`nav-chkbox-option-${v.id}`}>
+              <Badge activityId={v.id} text={v.name} />
             </label>
           </div>
         );

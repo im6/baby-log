@@ -1,7 +1,9 @@
 import { FC, Fragment } from "react";
 import BackLink from "../../partials/BackLink";
 import ActivityChkboxGroup from "../../partials/ActivityChkboxGroup";
+import WideButton from "../../partials/WideButton";
 import { ActivityDefinitionSchema, TimeOption } from "../../../interface";
+import style from "./style.module.less";
 
 interface CreateProps {
   selectedActivity: number[];
@@ -17,10 +19,10 @@ const CreatePage: FC<CreateProps> = ({
   <Fragment>
     <BackLink />
     <form action="/create-event" method="post">
-      <div className="create-layout">
+      <div className={style.layout}>
         <div>
           <label htmlFor="event-time">Time</label>
-          <div className="create-time-list">
+          <div className={style.timeList}>
             {timeOptions.map((v: TimeOption) => {
               const id = `time-options-${v.id}`;
               return (
@@ -32,7 +34,7 @@ const CreatePage: FC<CreateProps> = ({
                     value={v.id}
                     defaultChecked={v.isNow}
                   />
-                  <label className="create-time" htmlFor={id}>
+                  <label className={style.createTime} htmlFor={id}>
                     {v.name}
                   </label>
                 </div>
@@ -49,11 +51,7 @@ const CreatePage: FC<CreateProps> = ({
           />
         </div>
       </div>
-      <input
-        className="wide-btn"
-        type="submit"
-        value="&#128316; Submit Event"
-      />
+      <WideButton type="submit">&#128316; Submit Event</WideButton>
     </form>
   </Fragment>
 );
