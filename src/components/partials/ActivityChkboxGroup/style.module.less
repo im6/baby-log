@@ -1,18 +1,18 @@
 .chkBoxGroup {
   & > div {
     margin: 8px 0;
-    label {
+    label > span {
       margin-left: 5px;
     }
   }
 }
 
 @media only screen and (min-device-width: 375px) and (max-device-width: 812px) and (orientation: portrait) {
-  .chkBoxGroup {
+  .chkBoxGroup.twoCol {
     & > div {
       display: inline-block;
       width: 48%;
-      label {
+      label > span {
         width: 110px;
       }
     }

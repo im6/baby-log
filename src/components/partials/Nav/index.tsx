@@ -11,7 +11,7 @@ interface NavProps {
 const Nav: FC<NavProps> = ({ allData, selected }) => {
   return (
     <form className={style.nav} action="/">
-      <ActivityChkboxGroup allData={allData} selected={selected} />
+      <ActivityChkboxGroup showTwoCol allData={allData} selected={selected} />
       <input type="submit" value="&#128269; Filter" />
     </form>
   );

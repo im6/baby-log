@@ -48,6 +48,7 @@ const CreatePage: FC<CreateProps> = ({
           <ActivityChkboxGroup
             selected={selectedActivity}
             allData={activityDefinition}
+            showTwoCol={false}
           />
         </div>
       </div>
