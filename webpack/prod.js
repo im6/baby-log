@@ -1,6 +1,7 @@
 const path = require("path");
 const nodeExternals = require("webpack-node-externals");
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
+const { localIdentName } = require("./base");
 
 const client = {
   mode: "production",
@@ -25,7 +26,14 @@ const client = {
           {
             loader: MiniCssExtractPlugin.loader,
           },
-          "css-loader",
+          {
+            loader: "css-loader",
+            options: {
+              modules: {
+                localIdentName,
+              },
+            },
+          },
           "less-loader",
         ],
       },
@@ -59,7 +67,18 @@ const server = {
       },
       {
         test: /\.less$/,
-        use: ["style-loader", "css-loader", "less-loader"],
+        use: [
+          {
+            loader: "css-loader",
+            options: {
+              modules: {
+                localIdentName,
+                exportOnlyLocals: true,
+              },
+            },
+          },
+          "less-loader",
+        ],
       },
     ],
   },

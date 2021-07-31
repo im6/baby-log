@@ -18,109 +18,117 @@ label,
 td {
   font-family: "Prompt", sans-serif;
 }
-.back-link {
-  font-size: 1.5em;
+
+._1S0qC {
+  margin-bottom: 10px;
 }
-.activity-chkbox-group > div {
-  margin: 8px 0;
+
+.aHDgT {
+  display: flex;
+  margin-bottom: 20px;
 }
-.activity-chkbox-group > div label {
-  margin-left: 5px;
+.aHDgT > div {
+  width: 50%;
 }
-.wide-btn {
+.aHDgT .PBGoO {
+  height: 360px;
+  overflow-y: auto;
+}
+._3PLKR {
+  font-size: 1.2em;
+}
+
+._2nnT5 {
+  display: flex;
+  padding: 15px 0 0 0;
+}
+._2nnT5 > form:nth-child(1) {
+  margin: 0 20px 0 0;
+}
+@media only screen and (min-device-width: 375px) and (max-device-width: 812px) and (orientation: portrait) {
+  ._2nnT5 {
+    display: block;
+    padding: 0;
+  }
+  ._2nnT5 > form:nth-child(1) {
+    margin: 0 0 10px 0;
+  }
+}
+
+._1-Aiu input[type="submit"] {
   width: 100%;
-  max-width: 768px;
-  padding: 3px 20px;
 }
-.badge {
+
+._3D-la {
   display: inline-block;
   padding: 3px 5px;
   border-radius: 3px;
 }
-.badge-color-1 {
+._3FSBc {
   color: #2f7aa2;
   background-color: #a2dbfa;
 }
-.badge-color-2 {
+._1ICXq {
   color: white;
   background-color: #11999e;
 }
-.badge-color-3 {
+._2u7_F {
   color: white;
   background-color: #30e3ca;
 }
-.badge-color-4 {
+._2EApi {
   color: #705e87;
   background-color: #ffcfdf;
 }
-.badge-color-5 {
+._2UnrY {
   color: white;
   background-color: #aba7f0;
 }
-.badge-color-6 {
+._38LnP {
   color: #87721b;
   background-color: #ffde7d;
 }
 
-.create-layout {
-  display: flex;
-  margin-bottom: 20px;
-}
-.create-layout > div {
-  width: 50%;
-}
-.create-layout .create-time-list {
-  height: 360px;
-  overflow-y: auto;
-}
-.create-time {
-  font-size: 1.2em;
+._1V7gl {
+  font-size: 1.5em;
 }
 
-.delete-layout {
-  margin-bottom: 10px;
-}
-
-.activity-layout {
-  display: flex;
-  padding: 15px 0 0 0;
-}
-.activity-layout > form:nth-child(1) {
-  margin: 0 20px 0 0;
-}
-.activity-table {
+.RsLTe {
   border-collapse: collapse;
 }
-.activity-table td {
+.RsLTe td {
   border: 1px solid #cfcfcf;
   padding: 0px;
 }
-.activity-table td span {
+.RsLTe td span {
   margin: 5px;
 }
-.activity-table td:nth-child(1) {
+.RsLTe td:nth-child(1) {
   min-width: 90px;
 }
-.activity-table tr > td:nth-child(1) {
+.RsLTe tr > td:nth-child(1) {
   font-size: 0.7em;
   padding: 0 5px;
 }
-.nav-form input[type="submit"] {
+
+._3thLf {
   width: 100%;
+  max-width: 768px;
+  padding: 3px 20px;
+}
+
+._1insc > div {
+  margin: 8px 0;
+}
+._1insc > div label {
+  margin-left: 5px;
 }
 @media only screen and (min-device-width: 375px) and (max-device-width: 812px) and (orientation: portrait) {
-  .activity-layout {
-    display: block;
-    padding: 0;
-  }
-  .activity-layout > form:nth-child(1) {
-    margin: 0 0 10px 0;
-  }
-  .activity-layout .activity-chkbox-group > div {
+  ._1insc > div {
     display: inline-block;
     width: 48%;
   }
-  .activity-layout .activity-chkbox-group > div label {
+  ._1insc > div label {
     width: 110px;
   }
 }

@@ -1,8 +1,7 @@
 const path = require("path");
 const nodeExternals = require("webpack-node-externals");
 const ServerStartPlugin = require("./plugins/ServerStartPlugin");
-
-const localIdentName = "[hash:base64:5]";
+const { localIdentName } = require("./base");
 
 const client = {
   mode: "development",
