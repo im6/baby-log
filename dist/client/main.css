@@ -19,116 +19,116 @@ td {
   font-family: "Prompt", sans-serif;
 }
 
-._1S0qC {
+._KIe2 {
   margin-bottom: 10px;
 }
 
-.aHDgT {
+.UW9i5 {
   display: flex;
   margin-bottom: 20px;
 }
-.aHDgT > div {
+.UW9i5 > div {
   width: 50%;
 }
-.aHDgT .PBGoO {
+.UW9i5 .rtykI {
   height: 360px;
   overflow-y: auto;
 }
-._3PLKR {
+._bga0 {
   font-size: 1.2em;
 }
 
-._2nnT5 {
+.n3eo5 {
   display: flex;
   padding: 15px 0 0 0;
 }
-._2nnT5 > form:nth-child(1) {
+.n3eo5 > form:nth-child(1) {
   margin: 0 20px 0 0;
 }
-@media only screen and (min-device-width: 375px) and (max-device-width: 812px) and (orientation: portrait) {
-  ._2nnT5 {
+@media only screen and (min-device-width: 360px) and (max-device-width: 812px) and (orientation: portrait) {
+  .n3eo5 {
     display: block;
     padding: 0;
   }
-  ._2nnT5 > form:nth-child(1) {
+  .n3eo5 > form:nth-child(1) {
     margin: 0 0 10px 0;
   }
 }
 
-._1-Aiu input[type="submit"] {
+._fVc5 input[type="submit"] {
   width: 100%;
 }
 
-._3D-la {
+._Aamr {
   display: inline-block;
   padding: 3px 5px;
   border-radius: 3px;
 }
-._3FSBc {
+.Etd84 {
   color: #2f7aa2;
   background-color: #a2dbfa;
 }
-._1ICXq {
+.tDFBL {
   color: white;
   background-color: #11999e;
 }
-._2u7_F {
+.u8Jx4 {
   color: white;
   background-color: #30e3ca;
 }
-._2EApi {
+.KCZs9 {
   color: #705e87;
   background-color: #ffcfdf;
 }
-._2UnrY {
+._jSMN {
   color: white;
   background-color: #aba7f0;
 }
-._38LnP {
+.YCZP9 {
   color: #87721b;
   background-color: #ffde7d;
 }
 
-._1V7gl {
+.b782w {
   font-size: 1.5em;
 }
 
-.RsLTe {
+.TXs1J {
   border-collapse: collapse;
 }
-.RsLTe td {
+.TXs1J td {
   border: 1px solid #cfcfcf;
   padding: 0px;
 }
-.RsLTe td span {
+.TXs1J td span {
   margin: 5px;
 }
-.RsLTe td:nth-child(1) {
+.TXs1J td:nth-child(1) {
   min-width: 90px;
 }
-.RsLTe tr > td:nth-child(1) {
+.TXs1J tr > td:nth-child(1) {
   font-size: 0.7em;
   padding: 0 5px;
 }
 
-._3thLf {
+._qmzl {
   width: 100%;
   max-width: 768px;
   padding: 3px 20px;
 }
 
-._1insc > div {
+.m_a5h > div {
   margin: 8px 0;
 }
-._1insc > div label > span {
+.m_a5h > div label > span {
   margin-left: 5px;
 }
-@media only screen and (min-device-width: 375px) and (max-device-width: 812px) and (orientation: portrait) {
-  ._1insc.RH9YN > div {
+@media only screen and (min-device-width: 360px) and (max-device-width: 812px) and (orientation: portrait) {
+  .m_a5h.XB1uK > div {
     display: inline-block;
     width: 48%;
   }
-  ._1insc.RH9YN > div label > span {
+  .m_a5h.XB1uK > div label > span {
     width: 110px;
   }
 }
