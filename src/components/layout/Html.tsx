@@ -4,9 +4,15 @@ interface HtmlProps {
   children: ReactNode;
   title: string;
   criticalCss: boolean;
+  includeScript: boolean;
 }
 
-const Html: FC<HtmlProps> = ({ children, title, criticalCss }) => (
+const Html: FC<HtmlProps> = ({
+  children,
+  title,
+  criticalCss,
+  includeScript,
+}) => (
   <html lang="en">
     <head>
       <title>{title}</title>
@@ -25,7 +31,7 @@ const Html: FC<HtmlProps> = ({ children, title, criticalCss }) => (
     </head>
     <body>
       {children}
-      {!criticalCss && <script src="/static/app.js" type="text/javascript" />}
+      {includeScript && <script src="/static/app.js" type="text/javascript" />}
     </body>
   </html>
 );

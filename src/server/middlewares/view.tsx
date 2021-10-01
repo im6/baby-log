@@ -85,6 +85,7 @@ export const renderActivity = async (req: Request, res: Response) => {
     <Html
       title="Baby Logs"
       criticalCss={process.env.NODE_ENV !== "development"}
+      includeScript={false}
     >
       <Activity
         eventList={eventList}
@@ -108,6 +109,7 @@ export const renderCreate = async (req: Request, res: Response) => {
     <Html
       title="Create an event"
       criticalCss={process.env.NODE_ENV !== "development"}
+      includeScript={false}
     >
       <CreatePage
         activityDefinition={actDefs}
@@ -137,7 +139,11 @@ export const renderCreateResult = async (req: Request, res: Response) => {
     );
   } else {
     const htmlDOM = (
-      <Html title="Failed" criticalCss={process.env.NODE_ENV !== "development"}>
+      <Html
+        title="Failed"
+        criticalCss={process.env.NODE_ENV !== "development"}
+        includeScript={false}
+      >
         <ActionResultPage message="Creating event failed" error />
       </Html>
     );
@@ -147,7 +153,11 @@ export const renderCreateResult = async (req: Request, res: Response) => {
     return;
   }
   const htmlDOM = (
-    <Html title="Succeed" criticalCss={process.env.NODE_ENV !== "development"}>
+    <Html
+      title="Succeed"
+      criticalCss={process.env.NODE_ENV !== "development"}
+      includeScript={false}
+    >
       <ActionResultPage message="Creating event succeeded" error={false} />
     </Html>
   );
@@ -183,6 +193,7 @@ export const renderDeleteConfirm = async (req: Request, res: Response) => {
     <Html
       title="Delete an event activity"
       criticalCss={process.env.NODE_ENV !== "development"}
+      includeScript={false}
     >
       <DeletePage {...viewModel} />
     </Html>
@@ -200,6 +211,7 @@ export const renderDeleteResult = async (req: Request, res: Response) => {
       <Html
         title="Successfully "
         criticalCss={process.env.NODE_ENV !== "development"}
+        includeScript={false}
       >
         <ActionResultPage message="Deleting event succeeded" error={false} />
       </Html>
@@ -209,7 +221,11 @@ export const renderDeleteResult = async (req: Request, res: Response) => {
     res.send(`<!DOCTYPE html>${html}`);
   } catch (error) {
     const htmlDOM = (
-      <Html title="Failed" criticalCss={process.env.NODE_ENV !== "development"}>
+      <Html
+        title="Failed"
+        criticalCss={process.env.NODE_ENV !== "development"}
+        includeScript={false}
+      >
         <ActionResultPage message="Deleting event failed" error />
       </Html>
     );
@@ -221,7 +237,11 @@ export const renderDeleteResult = async (req: Request, res: Response) => {
 
 export const renderError = (req: Request, res: Response) => {
   const htmlDOM = (
-    <Html title="Failed" criticalCss={process.env.NODE_ENV !== "development"}>
+    <Html
+      title="Failed"
+      criticalCss={process.env.NODE_ENV !== "development"}
+      includeScript={false}
+    >
       <ActionResultPage message="Bad Request" error />
     </Html>
   );
@@ -232,7 +252,7 @@ export const renderError = (req: Request, res: Response) => {
 
 export const renderMetrics = (req: Request, res: Response) => {
   const htmlDOM = (
-    <Html title="Log Baby Metrics" criticalCss={false}>
+    <Html title="Log Baby Metrics" criticalCss={false} includeScript>
       <MetricsPage />
     </Html>
   );

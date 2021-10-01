@@ -25,6 +25,7 @@ export const renderMetricsUpdateResult = (req: Request, res: Response) => {
     const htmlDOM = (
       <Html
         title="Succeed"
+        includeScript={false}
         criticalCss={process.env.NODE_ENV !== "development"}
       >
         <ActionResultPage
@@ -38,7 +39,11 @@ export const renderMetricsUpdateResult = (req: Request, res: Response) => {
     res.send(`<!DOCTYPE html>${html}`);
   } else {
     const htmlDOM = (
-      <Html title="Fail" criticalCss={process.env.NODE_ENV !== "development"}>
+      <Html
+        title="Fail"
+        criticalCss={process.env.NODE_ENV !== "development"}
+        includeScript={false}
+      >
         <ActionResultPage message="Creating formula metrics failed" error />
       </Html>
     );
