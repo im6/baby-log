@@ -1,7 +1,6 @@
 import { FC, Fragment } from "react";
 import Nav from "../../partials/Nav";
 import EventTable from "../../partials/EventTable";
-import WideButton from "../../partials/WideButton";
 import { ActivityDefinitionSchema, EventTableRow } from "../../../interface";
 import style from "./style.module.less";
 
@@ -19,7 +18,15 @@ const Activity: FC<ActivityProps> = ({
   <Fragment>
     <div>
       <a href="/create">
-        <WideButton type="button">&#10133; Create Event</WideButton>
+        <button type="button" className={style.btn}>
+          &#10133; Create Event
+        </button>
+      </a>
+      &nbsp;
+      <a href="/metrics-ui">
+        <button type="button" className={style.btn}>
+          &#10133; Create Metric
+        </button>
       </a>
     </div>
     <div className={style.layout}>

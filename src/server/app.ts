@@ -6,8 +6,10 @@ import {
   renderDeleteConfirm,
   renderDeleteResult,
   renderError,
-  renderStatic,
-} from "./middlewares";
+  renderMetrics,
+} from "./middlewares/view";
+import { getMetrics, updateMetric } from "./middlewares/metrics";
+import { renderStatic } from "./middlewares/static";
 
 const app = express();
 app.use(
@@ -15,6 +17,10 @@ app.use(
     extended: true,
   })
 );
+
+app.get("/metrics", getMetrics);
+app.get("/metrics-ui", renderMetrics);
+app.post("/metrics", updateMetric);
 
 app.get("/create", renderCreate);
 app.get("/delete-confirm/:id", renderDeleteConfirm);

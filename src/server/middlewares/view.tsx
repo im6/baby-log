@@ -1,12 +1,13 @@
 import { Request, Response } from "express";
 import { renderToStaticMarkup } from "react-dom/server";
-import mysql from "./mysql";
-import Html from "../components/layout/Html";
-import Activity from "../components/pages/Activity";
-import CreatePage from "../components/pages/Create";
-import DeletePage from "../components/pages/Delete";
-import ActionResultPage from "../components/pages/ActionResult";
-import { generateTimeOptions, formatDate } from "../helper";
+import mysql from "../mysql";
+import Html from "../../components/layout/Html";
+import Activity from "../../components/pages/Activity";
+import CreatePage from "../../components/pages/Create";
+import DeletePage from "../../components/pages/Delete";
+import MetricsPage from "../../components/pages/Metrics";
+import ActionResultPage from "../../components/pages/ActionResult";
+import { generateTimeOptions, formatDate } from "../../helper";
 import {
   ActivityDefinitionSchema,
   EventActivity,
@@ -14,17 +15,7 @@ import {
   EventTableRow,
   LogSchema,
   TimeOption,
-} from "../interface";
-
-const fileMap: Record<string, string> =
-  process.env.NODE_ENV === "development"
-    ? {
-        "app.js": "./local/client/index.js",
-      }
-    : {
-        "app.js": "./dist/client/index.js",
-        "style.css": "./dist/client/main.css",
-      };
+} from "../../interface";
 
 const childId = 1;
 
@@ -239,6 +230,16 @@ export const renderError = (req: Request, res: Response) => {
   res.send(`<!DOCTYPE html>${html}`);
 };
 
-export const renderStatic = (req: Request, res: Response) => {
-  res.sendFile(fileMap[req.params.name], { root: process.cwd() });
+export const renderMetrics = (req: Request, res: Response) => {
+  const htmlDOM = (
+    <Html
+      title="Log Baby Metrics"
+      criticalCss={process.env.NODE_ENV !== "development"}
+    >
+      <MetricsPage />
+    </Html>
+  );
+  const html = renderToStaticMarkup(htmlDOM);
+  res.status(400);
+  res.send(`<!DOCTYPE html>${html}`);
 };
