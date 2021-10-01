@@ -19,8 +19,6 @@ if (window.location.pathname === "/metrics-ui") {
     submitBtn.addEventListener("click", (evt) => {
       if (cur < 10) {
         evt.preventDefault();
-      } else {
-        submitBtn.style.display = "none";
       }
     });
   });

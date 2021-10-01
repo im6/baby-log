@@ -15,6 +15,7 @@ span,
 button,
 input,
 label,
+form,
 td {
   font-family: "Prompt", sans-serif;
 }
@@ -45,6 +46,9 @@ td {
 .n3eo5 > form:nth-child(1) {
   margin: 0 20px 0 0;
 }
+._2chV {
+  width: 47%;
+}
 @media only screen and (min-device-width: 360px) and (max-device-width: 812px) and (orientation: portrait) {
   .n3eo5 {
     display: block;
@@ -53,6 +57,16 @@ td {
   .n3eo5 > form:nth-child(1) {
     margin: 0 0 10px 0;
   }
+}
+
+._Dvvd {
+  margin: 5px;
+  padding: 5px 15px;
+}
+._JXgq {
+  margin-top: 20px;
+  margin-left: 5px;
+  font-size: 1.5em;
 }
 
 ._fVc5 input[type="submit"] {
