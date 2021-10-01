@@ -240,6 +240,5 @@ export const renderMetrics = (req: Request, res: Response) => {
     </Html>
   );
   const html = renderToStaticMarkup(htmlDOM);
-  res.status(400);
   res.send(`<!DOCTYPE html>${html}`);
 };
