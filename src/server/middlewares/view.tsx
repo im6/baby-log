@@ -232,10 +232,7 @@ export const renderError = (req: Request, res: Response) => {
 
 export const renderMetrics = (req: Request, res: Response) => {
   const htmlDOM = (
-    <Html
-      title="Log Baby Metrics"
-      criticalCss={process.env.NODE_ENV !== "development"}
-    >
+    <Html title="Log Baby Metrics" criticalCss={false}>
       <MetricsPage />
     </Html>
   );

@@ -20,16 +20,30 @@ export const getMetrics = (req: Request, res: Response) => {
 };
 
 export const renderMetricsUpdateResult = (req: Request, res: Response) => {
-  counter.inc(parseInt(req.body.amt));
-  const htmlDOM = (
-    <Html title="Succeed" criticalCss={process.env.NODE_ENV !== "development"}>
-      <ActionResultPage
-        message="Creating formula metrics successfully"
-        error={false}
-      />
-    </Html>
-  );
-  const html = renderToStaticMarkup(htmlDOM);
-  res.status(200);
-  res.send(`<!DOCTYPE html>${html}`);
+  if (req.body.amt) {
+    counter.inc(parseInt(req.body.amt));
+    const htmlDOM = (
+      <Html
+        title="Succeed"
+        criticalCss={process.env.NODE_ENV !== "development"}
+      >
+        <ActionResultPage
+          message="Creating formula metrics successfully"
+          error={false}
+        />
+      </Html>
+    );
+    const html = renderToStaticMarkup(htmlDOM);
+    res.status(200);
+    res.send(`<!DOCTYPE html>${html}`);
+  } else {
+    const htmlDOM = (
+      <Html title="Fail" criticalCss={process.env.NODE_ENV !== "development"}>
+        <ActionResultPage message="Creating formula metrics failed" error />
+      </Html>
+    );
+    const html = renderToStaticMarkup(htmlDOM);
+    res.status(400);
+    res.send(`<!DOCTYPE html>${html}`);
+  }
 };
